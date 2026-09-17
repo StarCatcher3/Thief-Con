@@ -9,9 +9,14 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "deploy": "gh-pages -d ./"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "homepage": "https://starcatcher3.github.io/Thief-Con",
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
 }
