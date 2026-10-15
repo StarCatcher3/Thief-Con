@@ -10,7 +10,7 @@
 }
 
 .inverted {
-  filter: invert(.3)
+  filter: invert(.3) hue-rotate(120deg) saturate(4);
 }
 
 .greenimage {
