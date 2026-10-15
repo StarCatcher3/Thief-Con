@@ -2,6 +2,7 @@
   --f-size: 6;
   --f-unit: 1vmin;
   --f: calc(var(--f-size) * var(--f-unit));
+  --green: #33AA00;
 }
 
 *, *::after, *::before {
@@ -9,7 +10,7 @@
 }
 
 .inverted {
-  filter: invert(.8);
+  filter: invert(.5);
 }
 
 body {
@@ -18,7 +19,7 @@ body {
   min-height: 100vh;
   margin: 0;
   overflow: hidden;
-  color: #33AA00;
+  color: var(--green);
   background-color:black;
 }
 
@@ -29,7 +30,7 @@ body {
   margin: auto;
   text-align: center;
   transform: scaleX(var(--scale, 1));
-  animation: glitch-p 11s infinite alternate;
+  animation: glitch-p var(--duration, 11s) infinite alternate;
   
   &::before,
   &::after {
@@ -59,10 +60,10 @@ body {
   } 
   
   &::before {
-    animation: glitch-b 1.7s infinite alternate-reverse;
+    animation: glitch-b var(--durationa, 1.7s) infinite alternate-reverse;
   }
   &::after {
-    animation: glitch-a 3.1s infinite alternate;
+    animation: glitch-a var(--durationb, 3.1s) infinite alternate;
   }
 }
 
