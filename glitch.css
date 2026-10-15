@@ -10,7 +10,11 @@
 }
 
 .inverted {
-  filter: invert(.5);
+  filter: invert(.7);
+}
+
+.greenimage {
+  filter: sepia(1) hue-rotate(65deg) saturate(4);
 }
 
 body {
