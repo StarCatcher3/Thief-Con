@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Thief Con 2026</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4 {font-family: "Lucida Console", monospace}
+.mySlides {display:none}
+.w3-tag, .fa {cursor:pointer}
+.w3-tag {height:15px;width:15px;padding:0;margin-top:6px}
+</style>
+<link rel="stylesheet" type="text/css" href="glitch.css"/>
+</head>
+<body>
+
+<script src="app.js"></script>
+
+<!-- Content -->
+<div class="w3-content" style="max-width:1100px;margin-bottom:80px">
+
+  <div class="w3-panel w3-left">
+    <h1 class="glitch" data-text="Thief Con"><b>Thief Con</b></h1>
+    <p>La Convention de Voleurs <span style="color:red">#1</span> du monde entier !</p>
+  </div>
+
+  <!-- Slideshow -->
+  <div class="w3-container">
+    <div class="w3-display-container mySlides">
+      <img src="/Thief-Con/public/Thief.jpg" alt="Voleur" style="width:100%">
+      <div class="w3-display-topleft w3-container w3-padding-32">
+        <span class="w3-padding-large w3-animate-bottom" style="color:var(--green); background-color:black">Vol</span>
+      </div>
+    </div>
+    <div class="w3-display-container mySlides">
+      <img class="inverted" src="/Thief-Con/public/Robber.jpg" alt="Cambriolage" style="width:100%">
+      <div class="w3-display-topmiddle w3-container w3-padding-32">
+        <span class="w3-padding-large w3-animate-bottom" style="color:var(--green); background-color:black">Cambriolage</span>
+      </div>
+    </div>
+    <div class="w3-display-container mySlides">
+      <img src="/Thief-Con/public/Hacker.jpg" alt="Braquages" style="width:100%">
+      <div class="w3-display-topright w3-container w3-padding-32">
+        <span class="w3-padding-large w3-animate-bottom" style="color:var(--green); background-color:black">Braquages</span>
+      </div>
+    </div>
+
+    <!-- Slideshow next/previous buttons -->
+    <div class="w3-container w3-padding w3-xlarge" style="color:var(--green); background-color:#111111">
+      <div class="w3-left" onclick="plusDivs(-1)"><i class="fa fa-arrow-circle-left w3-hover-text-teal"></i></div>
+      <div class="w3-right" onclick="plusDivs(1)"><i class="fa fa-arrow-circle-right w3-hover-text-teal"></i></div>
+    
+      <div>
+        <span class="w3-tag demodots w3-border w3-transparent w3-hover-green" onclick="currentDiv(1)"></span>
+        <span class="w3-tag demodots w3-border w3-transparent w3-hover-green" onclick="currentDiv(2)"></span>
+        <span class="w3-tag demodots w3-border w3-transparent w3-hover-green" onclick="currentDiv(3)"></span>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="w3-container">
+    <div class="w3-center w3-padding-64" style="rotate: 10deg;">
+      <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">De quoi c'est basé ?</span>
+    </div>
+    <div class="w3-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+    <div class="w3-container w3-padding-16" style="color:#338811; background-color:#080820">
+      <h3 class="glitch" data-text="Meet">Rencontrer</h3>
+      <p>Faire connaissance avec d'autres professionels dans le domaine. Les meilleurs voleurs assisteront, vous ne voulez pas vous manquer cette opportunité de vous mettre en contact avec eux.</p>
+    </div>
+
+    <div class="w3-container w3-padding-16" style="padding-left: 60px; padding-right: 0px; color:var(--green); background-color:#180808">
+      <h3 class="glitch" data-text="Mingle" style="--duration: 10s; --durationa: 2s; --durationb: 3.8s;">Se Mélanger</h3>
+      <p>Faire grandir votre réseau et trouver de nouveaux collaborateurs pour vos futurs projets. Il y aura un temps dédié pour vous connecter avec les spécialistes que vous admirez le plus.</p>
+    </div>
+
+    <div class="w3-container" style="color:var(--green); background-color:#081808">
+      <h3 class="glitch" data-text="Learn" style="--duration: 9.2s; --durationa: 2.4s; --durationb: 2.9s;">Apprendre</h3>
+      <p>Assistez à notre présentation clé pour obtenir les dernières mises à jour qui impactent votre travail quotidien. Telemachus Finch, notre orateur principal, a plus d'années d'expérience que vous ne pouvez l'imaginer.</p>
+    </div>
+
+    <div class="w3-container w3-padding-16" style="rotate: -20deg; color:var(--green); background-color:#111111">
+      <h3 class="glitch" data-text="Steal" style="--duration: 10.7s; --durationa: 3.2s; --durationb: 1.8s;">Voler</h3>
+      <p>Mettez à l'épreuve vos compétences avec les dernières techniques pour faire avancer votre carrière et obtenir l'expérience nécessaire pour rester à jour dans l'industrie.</p>
+    </div>
+    </div>
+  </div>
+
+  <!-- Pricing Plans -->
+  <div class="w3-container" id="plans">
+    <div class="w3-center w3-padding-64">
+      <p class="glitch" data-text="on" style="color: #1af0dc; text-align: right; padding-right: 30px;">comptez</p>
+      <div style="display: flex">
+        <h3>Vous</h3>
+        <h2>Assister ?</h2>
+      </div>
+      <p style="rotate: 3deg;">Choisissez une entrée qui correspond à vos besoins.</p>
+    </div>
+
+    <div class="w3-grid" style="position: relative; height: 1500px; grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px; border: 3px solid green;">
+    <div style="position: absolute; width: 100%;">
+      <ul class="w3-ul w3-center w3-hover-shadow">
+        <li class="w3-xlarge w3-padding-32" style="background-color: #111111">Basique</li>
+        <li class="w3-padding-16">Place <b>Economique</b></li>
+        <li class="w3-padding-16"><b>1</b> Artifact Gratuit</li>
+        <li class="w3-padding-16">
+          <h2 class="w3-wide">2,000 €</h2>
+          <span class="w3-opacity">par personne</span>
+        </li>
+        <li class="w3-black w3-padding-24">
+          <button class="w3-button w3-padding-large" style="background-color: var(--green); color: #080820;">S'inscrire</button>
+        </li>
+      </ul>
+    </div>
+
+    <div style="position: absolute; left: 50px; top: 300px;">
+      <ul class="w3-ul w3-center w3-hover-shadow" style="rotate: 5deg;">
+        <li class="w3-xlarge w3-padding-32">Pro</li>
+        <li class="w3-padding-16">Place <b>Affaires</b></li>
+        <li class="w3-padding-16"><b>5</b> Artifacts Gratuits</li>
+        <li class="w3-padding-16">Il faut prendre cette place pour avancer</li>
+        <li class="w3-padding-16">
+          <h2 class="w3-wide">8,000 €</h2>
+          <span class="w3-opacity">par personne</span>
+        </li>
+        <li class="w3-black">
+          <button class="w3-button w3-padding-large" style="background-color: #DD2222; color: black;">S'inscrire</button>
+        </li>
+      </ul>
+    </div>
+
+    <div style="position: absolute; top: 900px;">
+      <ul class="w3-ul w3-center w3-hover-shadow">
+        <li class="w3-black w3-xlarge w3-padding-32">Premium</li>
+        <li class="w3-padding-16">Place <b class="glitch" data-text="VIP">VIP</b></li>
+        <li class="w3-padding-16"><b>10</b> Artifacts Gratuits</li>
+        <li class="w3-padding-16">Conversation avec le locuteur</li>
+        <li class="w3-padding-16">Accès aux arrière-scènes</li>
+        <li class="w3-padding-16">
+          <h2 class="w3-wide">26,000 €</h2>
+          <span class="w3-opacity">par personne</span>
+        </li>
+        <li class="w3-black w3-padding-24">
+          <button class="w3-button w3-padding-large" style="background-color: #DD2222; color: #227722;">S'inscrire</button>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </div>
+
+  <!-- Who We Are -->
+  <div class="w3-container" id="about">
+    <div class="w3-center w3-padding-64">
+      <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Qui sommes-nous ?</span>
+    </div>
+
+    <div class="w3-grid" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px">
+    <div>
+      <div class="w3-card-4">
+        <img src="/Thief-Con/public/Professor Getsshot.jpg" alt="Professor" style="width:100%">
+        <div class="w3-container">
+          <h3>Professor Getsshot</h3>
+          <p class="w3-opacity">l'Hôte de Thief Con</p>
+          <p>"La volition d'être United entre toutes les techniques de cambriolage est un aspect clé pour un bon voleur."</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="w3-card-4">
+        <img class="inverted" src="/Thief-Con/public/Telemachus Finch.jpg" alt="Telemachus" style="width:100%">
+        <div class="w3-container">
+          <h3>Telemachus Finch</h3>
+          <p class="w3-opacity">Invraisemblablement Vieil Homme</p>
+          <p>Un homme incroyablement vieux avec trop d'expérience dans le domaine. Le meilleur locuteur qui a déjà vécu sur terre.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="w3-card-4">
+        <img class="greenimage" src="/Thief-Con/public/The Fence.PNG" alt="Fence" style="width:100%">
+        <div class="w3-container">
+          <h3>Le Fence</h3>
+          <p class="w3-opacity">Troisième Parti Impartiel</p>
+          <p>N'aime pas être impliqué dans l'action, mais s'assure que les comptes soient en ordre à la fin de la journée.</p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div class="w3-center w3-padding-64" id="contact">
+    <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Contactez-nous</span>
+  </div>
+
+  <form class="w3-container" action="/action_page.php" target="_blank">
+    <div class="w3-section" style="rotate: 20deg; position: relative; z-index: 5;">
+      <p data-text="Safe Code" class="glitch" style="--duration: 10.7s; --durationa: 3.2s; --durationb: 1.8s;">Nom</p>
+      <input class="w3-input w3-border w3-hover-border-black" style="width:100%; background-color: #222222; color: red;" type="text" name="Name">
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="w3-section" style="rotate: -40deg; position: relative; z-index: 10;">
+      <p data-text="Group Value" class="glitch">M<span style="color: green">essag</span>e</p>
+      <input class="w3-input w3-border w3-hover-border-black" style="width:100%; background-color: #222222; color: red;" name="Message">
+    </div>
+    <button type="submit" class="w3-button w3-block" style="background-color: #222222; color: var(--green); rotate: 200deg; position: relative;z-index: 0;">Envoyer</button>
+  </form>
+  <br>
+  <br>
+  <br>
+  <br>
+
+</div>
+
+
+<!-- Links (sit on bottom) -->
+<div class="w3-bottom">
+  <nav class="w3-flex w3-large w3-light-grey">
+    <a href="index.html" class="w3-button" style="flex:1">Accueil</a>
+    <a href="#plans" class="w3-button" style="flex:1">Entrées</a>
+    <a href="#about" class="w3-button" style="flex:1">À propos</a>
+    <a href="#contact" class="w3-button" style="flex:1">Contact</a>
+  </nav>
+</div>
+
+
+<script>
+let slideIndex = 1;
+showSlide(slideIndex);
+
+function plusDivs(step) {
+  showSlide(slideIndex += step);
+}
+
+function currentDiv(index) {
+  showSlide(slideIndex = index);
+}
+
+function showSlide(index) {
+  const slides = document.querySelectorAll(".mySlides");
+  const dots = document.querySelectorAll(".demodots");
+
+  if (index > slides.length) {
+    slideIndex = 1;
+  }
+
+  if (index < 1) {
+    slideIndex = slides.length;
+  }
+
+  slides.forEach(slide => {
+    slide.style.display = "none";
+  });
+
+  dots.forEach(dot => {
+    dot.classList.remove("w3-white");
+  });
+
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].classList.add("w3-green");
+}
+</script>
+
+</body>
+</html>
