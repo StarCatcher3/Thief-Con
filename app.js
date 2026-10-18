@@ -36,6 +36,8 @@ const indexSubmit = () => {
       } else {
         window.location.href = "redirect.html?redirect=hlp.html"
       }
+    } else if (username == "fence" && password == "ray26") {
+      window.location.href = "redirect.html?redirect=admin-dash.html"
     } else {
       document.getElementById("hlp-username").value = "";
       document.getElementById("hlp-password").value = "";
