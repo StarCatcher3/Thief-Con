@@ -22,19 +22,20 @@ const getTime = () => {
 }
 
 const indexSubmit = () => {
-  const username = document.getElementById("hlp-username").value;
-  const password = document.getElementById("hlp-password").value;
+  const username = document.getElementById("hlp-username").value.toLowerCase();
+  const password = document.getElementById("hlp-password").value.toLowerCase();
   fetch(`${apiUrl}/clues?hlp_username=eq.${username}&hlp_password=eq.${password}&apikey=${apiKey}`).then(response => response.json().then(data => {
     if (data.length > 0) {
+      window.localStorage.setItem("player_id", data[0].id);
       if (data[0].hlp == null ) {
         fetch(`${apiUrl}/clues?id=eq.${data[0].id}`, { method: 'PATCH', headers: {
           'Content-Type': 'application/json',
           'apikey': apiKey,
           'Prefer': 'return=representation'
-        }, body: JSON.stringify({ hlp: getTime() }) }).then(response => response.json().then(data => console.log(data)));
+        }, body: JSON.stringify({ hlp: getTime() }) }).then(r => r.json().then(d => window.location.href = "redirect.html?redirect=hlp.html"));
+      } else {
+        window.location.href = "redirect.html?redirect=hlp.html"
       }
-      window.localStorage.setItem("player_id", data[0].id);
-      window.location.href = "redirect.html?redirect=hlp.html"
     } else {
       document.getElementById("hlp-username").value = "";
       document.getElementById("hlp-password").value = "";
@@ -48,31 +49,48 @@ const hlpSubmit = () => {
   const tacpCode = document.getElementById("tacp-code").value;
   document.getElementById("kbpp-value").value = "";
   document.getElementById("tacp-code").value = "";
+  let transferred = false;
   const playerId = window.localStorage.getItem("player_id");
   fetch(`${apiUrl}/clues?id=eq.${playerId}&kbpp_value=eq.${kbppValue}&apikey=${apiKey}`).then(response => response.json().then(data => {
     if (data.length > 0) {
+      transferred = true;
       if (data[0].kbpp == null ) {
         fetch(`${apiUrl}/clues?id=eq.${playerId}`, { method: 'PATCH', headers: {
           'Content-Type': 'application/json',
           'apikey': apiKey,
           'Prefer': 'return=representation'
-        }, body: JSON.stringify({ kbpp: getTime() }) }).then(r => r.json().then(d => console.log(d)));
+        }, body: JSON.stringify({ kbpp: getTime() }) }).then(r => r.json().then(d => window.location.href = "redirect.html?redirect=kbpp.html"));
+      } else {
+        window.location.href = "redirect.html?redirect=kbpp.html"
       }
-      window.location.href = "redirect.html?redirect=kbpp.html"
     }
   }));
   fetch(`${apiUrl}/clues?id=eq.${playerId}&tacp_code=eq.${tacpCode}&apikey=${apiKey}`).then(response => response.json().then(data => {
     if (data.length > 0) {
+      transferred = true;
       if (data[0].tacp == null ) {
         fetch(`${apiUrl}/clues?id=eq.${playerId}`, { method: 'PATCH', headers: {
           'Content-Type': 'application/json',
           'apikey': apiKey,
           'Prefer': 'return=representation'
-        }, body: JSON.stringify({ tacp: getTime() }) }).then(r => r.json().then(d => console.log(d)));
+        }, body: JSON.stringify({ tacp: getTime() }) }).then(r => r.json().then(d => window.location.href = "redirect.html?redirect=tacp.html"));
+      } else {
+        window.location.href = "redirect.html?redirect=tacp.html"
       }
-      window.location.href = "redirect.html?redirect=tacp.html"
     }
   }));
+  if (!transferred) {
+    alert("₮Ⱨ₳₦₭ ɎØɄ ₣ØⱤ ɎØɄⱤ ₥Ɇ₴₴₳₲Ɇ");
+  }
+}
+
+const tacpProceed = () => {
+  const playerId = window.localStorage.getItem("player_id");
+  fetch(`${apiUrl}/clues?id=eq.${playerId}&hhp=is.null`, { method: 'PATCH', headers: {
+    'Content-Type': 'application/json',
+    'apikey': apiKey,
+    'Prefer': 'return=representation'
+  }, body: JSON.stringify({ hhp: getTime() }) }).then(r => r.json().then(d => window.location.href = "redirect.html?redirect=hhp.html"));
 }
 
 const getProgressId = (playerId) => {

@@ -1,4 +1,25 @@
 const width_threshold = 480;
+const apiUrl = "https://geljnhjhktydutfoujqo.supabase.co/rest/v1"
+const apiKey = "sb_publishable_dHy6cc66QpvaMCZ3-rKrCg_6DJ9YP4C"
+
+let progressData = [0, 0, 0, 0, 0, 0, 0, 0];
+
+const updateData = async () => {
+    fetch(`${apiUrl}/clues?apikey=${apiKey}`).then(response => response.json().then(data => {
+      console.log(data);
+      const playerData = data.map(player => {
+        const cluesFound = [player.hlp, player.kbpp, player.tacp, player.hhp, player.kmp, player.tafp, player.knp];
+        const cluesFoundCount = cluesFound.filter(clue => clue !== null).length;
+        return {name: player.hlp_username, clueCount: cluesFoundCount, clueTimes: cluesFound};
+      });
+      console.log(playerData);
+      playerNames = playerData.map(player => player.name);
+      progressData = playerData.map(player => player.clueCount);
+      console.log(playerNames);
+      drawLineChart(); // Line Chart
+      drawBarChart(); // Bar Chart
+    }));
+}
 
 function drawLineChart() {
   if ($("#lineChart").length) {
@@ -104,18 +125,20 @@ function drawBarChart() {
     configBar = {
       type: "bar",
       data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        labels: playerNames,
         datasets: [
           {
-            label: "# of Hits",
-            data: [12, 19, 3, 5, 2, 3],
+            label: "# of Clues Found",
+            data: progressData,
             backgroundColor: [
               "rgba(255, 99, 132, 0.2)",
               "rgba(54, 162, 235, 0.2)",
               "rgba(255, 206, 86, 0.2)",
               "rgba(75, 192, 192, 0.2)",
               "rgba(153, 102, 255, 0.2)",
-              "rgba(255, 159, 64, 0.2)"
+              "rgba(255, 159, 64, 0.2)",
+              "rgba(60, 200, 64, 0.2)",
+              "rgba(80, 80, 80, 0.2)"
             ],
             borderColor: [
               "rgba(255,99,132,1)",
@@ -123,7 +146,9 @@ function drawBarChart() {
               "rgba(255, 206, 86, 1)",
               "rgba(75, 192, 192, 1)",
               "rgba(153, 102, 255, 1)",
-              "rgba(255, 159, 64, 1)"
+              "rgba(255, 159, 64, 1)",
+              "rgba(60, 200, 64, 1)",
+              "rgba(80, 80, 80, 1)"
             ],
             borderWidth: 1
           }
@@ -136,37 +161,8 @@ function drawBarChart() {
   }
 }
 
-function drawPieChart() {
-  if ($("#pieChart").length) {
-    ctxPie = document.getElementById("pieChart").getContext("2d");
-    optionsPie = {
-      responsive: true,
-      maintainAspectRatio: false
-    };
-
-    configPie = {
-      type: "pie",
-      data: {
-        datasets: [
-          {
-            data: [4600, 5400],
-            backgroundColor: [
-              window.chartColors.purple,
-              window.chartColors.green
-            ],
-            label: "Storage"
-          }
-        ],
-        labels: ["Used: 4,600 GB", "Available: 5,400 GB"]
-      },
-      options: optionsPie
-    };
-
-    pieChart = new Chart(ctxPie, configPie);
-  }
-}
-
 function updateChartOptions() {
+  updateData();
   if ($(window).width() < width_threshold) {
     if (optionsLine) {
       optionsLine.maintainAspectRatio = false;

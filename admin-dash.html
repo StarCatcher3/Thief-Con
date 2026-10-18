@@ -42,19 +42,14 @@
             <div class="row tm-content-row tm-mt-big">
                 <div class="tm-col tm-col-big">
                     <div class="bg-white tm-block h-100">
-                        <h2 class="tm-block-title">Latest Hits</h2>
+                        <h2 class="tm-block-title">Progress Over Time</h2>
                         <canvas id="lineChart"></canvas>
                     </div>
                 </div>
                 <div class="tm-col tm-col-big">
                     <div class="bg-white tm-block h-100">
-                        <h2 class="tm-block-title">Performance</h2>
+                        <h2 class="tm-block-title">Progress</h2>
                         <canvas id="barChart"></canvas>
-                    </div>
-                </div>
-                <div class="tm-col tm-col-small">
-                    <div class="bg-white tm-block h-100">
-                        <canvas id="pieChart" class="chartjs-render-monitor"></canvas>
                     </div>
                 </div>
 
@@ -183,7 +178,7 @@
     <!-- http://www.chartjs.org/docs/latest/ -->
     <script src="js/bootstrap.min.js"></script>
     <!-- https://getbootstrap.com/ -->
-    <script src="app.js"></script>
+    
     <script src="js/tooplate-scripts.js"></script>
     <script>
         let ctxLine,
@@ -196,13 +191,10 @@
             configBar,
             configPie,
             lineChart;
-        barChart, pieChart;
+        barChart;
         // DOM is ready
         $(function () {
             updateChartOptions();
-            drawLineChart(); // Line Chart
-            drawBarChart(); // Bar Chart
-            drawPieChart(); // Pie Chart
 
             $(window).resize(function () {
                 updateChartOptions();

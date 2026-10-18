@@ -69,7 +69,7 @@ html,body,h1,h2,h3,h4 {font-family: "Lucida Console", monospace}
     <div class="w3-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
     <div class="w3-container w3-padding-16" style="color:#338811; background-color:#080820">
       <h3 class="glitch" data-text="Meet">Rencontrer</h3>
-      <p>Faire connaissance avec d'autres professionels dans le domaine. Les meilleurs voleurs assisteront, vous ne voulez pas vous manquer cette opportunité de vous mettre en contact avec eux.</p>
+      <p>C'est bien important de choisir cambriolage pour pouvoir avancer. Faites-le. Faire connaissance avec d'autres professionels dans le domaine. Les meilleurs voleurs assisteront, vous ne voulez pas vous manquer cette opportunité de vous mettre en contact avec eux.</p>
     </div>
 
     <div class="w3-container w3-padding-16" style="padding-left: 60px; padding-right: 0px; color:var(--green); background-color:#180808">
@@ -111,7 +111,7 @@ html,body,h1,h2,h3,h4 {font-family: "Lucida Console", monospace}
           <span class="w3-opacity">par personne</span>
         </li>
         <li class="w3-black w3-padding-24">
-          <button class="w3-button w3-padding-large" style="background-color: var(--green); color: #080820;">S'inscrire</button>
+          <button onclick="alert('Complet')" class="w3-button w3-padding-large" style="background-color: var(--green); color: #080820;">S'inscrire</button>
         </li>
       </ul>
     </div>
@@ -121,13 +121,13 @@ html,body,h1,h2,h3,h4 {font-family: "Lucida Console", monospace}
         <li class="w3-xlarge w3-padding-32">Pro</li>
         <li class="w3-padding-16">Place <b>Affaires</b></li>
         <li class="w3-padding-16"><b>5</b> Artifacts Gratuits</li>
-        <li class="w3-padding-16">Il faut prendre cette place pour avancer</li>
+        <li class="w3-padding-16">Suivez les consignes et prenez cette place pour avancer</li>
         <li class="w3-padding-16">
           <h2 class="w3-wide">8,000 €</h2>
           <span class="w3-opacity">par personne</span>
         </li>
         <li class="w3-black">
-          <button class="w3-button w3-padding-large" style="background-color: #DD2222; color: black;">S'inscrire</button>
+          <button onclick="tacpSubmit()"  class="w3-button w3-padding-large" style="background-color: #DD2222; color: black;">S'inscrire</button>
         </li>
       </ul>
     </div>
@@ -144,7 +144,7 @@ html,body,h1,h2,h3,h4 {font-family: "Lucida Console", monospace}
           <span class="w3-opacity">par personne</span>
         </li>
         <li class="w3-black w3-padding-24">
-          <button class="w3-button w3-padding-large" style="background-color: #DD2222; color: #227722;">S'inscrire</button>
+          <button onclick="alert('Complet')" class="w3-button w3-padding-large" style="background-color: #DD2222; color: #227722;">S'inscrire</button>
         </li>
       </ul>
     </div>
@@ -163,7 +163,7 @@ html,body,h1,h2,h3,h4 {font-family: "Lucida Console", monospace}
         <img src="/Thief-Con/public/Professor Getsshot.jpg" alt="Professor" style="width:100%">
         <div class="w3-container">
           <h3>Professor Getsshot</h3>
-          <p class="w3-opacity">l'Hôte de Thief Con</p>
+          <p class="w3-opacity">Aujourd'hui c'est vous. Insérez votre nom dans le formulaire.</p>
           <p>"La volition d'être United entre toutes les techniques de cambriolage est un aspect clé pour un bon voleur."</p>
         </div>
       </div>
@@ -198,10 +198,10 @@ html,body,h1,h2,h3,h4 {font-family: "Lucida Console", monospace}
     <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Contactez-nous</span>
   </div>
 
-  <form class="w3-container" action="/action_page.php" target="_blank">
+  <div class="w3-container" action="/action_page.php" target="_blank">
     <div class="w3-section" style="rotate: 20deg; position: relative; z-index: 5;">
-      <p data-text="Safe Code" class="glitch" style="--duration: 10.7s; --durationa: 3.2s; --durationb: 1.8s;">Nom</p>
-      <input class="w3-input w3-border w3-hover-border-black" style="width:100%; background-color: #222222; color: red;" type="text" name="Name">
+      <p data-text="Safe Code" class="glitch" style="--duration: 10.7s; --durationa: 3.2s; --durationb: 1.8s;">Votre Nouveau Nom</p>
+      <input id="nom-input" class="w3-input w3-border w3-hover-border-black" style="width:100%; background-color: #222222; color: red;" type="text" name="Name">
     </div>
     <br>
     <br>
@@ -212,8 +212,8 @@ html,body,h1,h2,h3,h4 {font-family: "Lucida Console", monospace}
       <p data-text="Group Value" class="glitch">M<span style="color: green">essag</span>e</p>
       <input class="w3-input w3-border w3-hover-border-black" style="width:100%; background-color: #222222; color: red;" name="Message">
     </div>
-    <button type="submit" class="w3-button w3-block" style="background-color: #222222; color: var(--green); rotate: 200deg; position: relative;z-index: 0;">Envoyer</button>
-  </form>
+    <button onclick="alert('₥ɆⱤ₵ł ₱ØɄⱤ VØ₮ⱤɆ ₥Ɇ₴₴₳₲Ɇ')" type="submit" class="w3-button w3-block" style="background-color: #222222; color: var(--green); rotate: 200deg; position: relative;z-index: 0;">Envoyer</button>
+  </div>
   <br>
   <br>
   <br>
@@ -267,6 +267,15 @@ function showSlide(index) {
 
   slides[slideIndex - 1].style.display = "block";
   dots[slideIndex - 1].classList.add("w3-green");
+}
+
+function tacpSubmit() {
+  const nom = document.getElementById("nom-input").value.toLowerCase();
+  if (slideIndex == 2 && nom == "professor getsshot") {
+    tacpProceed();
+  } else {
+    alert("Complet")
+  }
 }
 </script>
 
