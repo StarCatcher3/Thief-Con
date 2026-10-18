@@ -2,20 +2,61 @@ const width_threshold = 480;
 const apiUrl = "https://geljnhjhktydutfoujqo.supabase.co/rest/v1"
 const apiKey = "sb_publishable_dHy6cc66QpvaMCZ3-rKrCg_6DJ9YP4C"
 
+const timeDataPoints = 10;
 let progressData = [0, 0, 0, 0, 0, 0, 0, 0];
+let playerNames = ["Player 1", "Player 2", "Player 3", "Player 4", "Player 5", "Player 6", "Player 7", "Player 8"];
+let clueData = [[], [], [], [], [], [], [], []]
+let timeLabels = []
+
+const resetData = () => {
+  if (confirm("Are you sure you want to reset all the player progress data? This is irreversible!")) {
+    fetch(`${apiUrl}/clues?id=not.is.null`, { method: 'PATCH', headers: {
+          'Content-Type': 'application/json',
+          'apikey': apiKey,
+          'Prefer': 'return=representation'
+        }, body: JSON.stringify({ hlp: null, kbpp: null, tacp: null, hhp: null, kmp: null, tafp: null, knp: null }) }).then(r => r.json().then(d => alert("Data Reset!")));
+  }
+  
+}
 
 const updateData = async () => {
     fetch(`${apiUrl}/clues?apikey=${apiKey}`).then(response => response.json().then(data => {
-      console.log(data);
       const playerData = data.map(player => {
-        const cluesFound = [player.hlp, player.kbpp, player.tacp, player.hhp, player.kmp, player.tafp, player.knp];
-        const cluesFoundCount = cluesFound.filter(clue => clue !== null).length;
+        const cluesFound = [player.hlp, player.kbpp, player.tacp, player.hhp, player.kmp, player.tafp, player.knp]
+          .filter(clue => clue !== null)
+          .map(time => {
+            const date = new Date();
+            date.setHours(...time.split(":").map(Number), 0);
+            return date;
+          });
+        const cluesFoundCount = cluesFound.length;
         return {name: player.hlp_username, clueCount: cluesFoundCount, clueTimes: cluesFound};
       });
-      console.log(playerData);
       playerNames = playerData.map(player => player.name);
       progressData = playerData.map(player => player.clueCount);
-      console.log(playerNames);
+      const allClueTimes = playerData.flatMap(player => player.clueTimes).filter(time => time != null);
+      if (allClueTimes.length > 0) {
+        const clueTimes = playerData.map(player => player.clueTimes);
+        const timeRange = [Math.min(...allClueTimes), Math.max(...allClueTimes)];
+        const timeStep = (timeRange[1] - timeRange[0]) / timeDataPoints;
+        console.log("Time Range: " + timeRange);
+        console.log("Time Step: " + timeStep);
+
+        timeLabels = []
+        let clueTimeData = []
+        for (time = timeRange[0]; time <= timeRange[1]; time += timeStep) {
+          const date = new Date(time)
+          timeLabels.push(`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`)
+          clueTimeData.push(clueTimes.map(c => c.filter(t => t <= time + timeStep).length))
+        }
+        clueData = clueTimeData[0].map((_, colIndex) =>
+            clueTimeData.map(row => row[colIndex])
+        );
+      } else {
+        timeLabels = ["00:00:00", "12:00:00"]
+        clueData = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+      }
+
       drawLineChart(); // Line Chart
       drawBarChart(); // Bar Chart
     }));
@@ -44,49 +85,62 @@ function drawLineChart() {
     configLine = {
       type: "line",
       data: {
-        labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July"
-        ],
+        labels: timeLabels,
         datasets: [
           {
-            label: "Latest Hits",
-            data: [88, 68, 79, 57, 56, 55, 70],
-            fill: false,
-            borderColor: "rgb(75, 192, 192)",
-            lineTension: 0.1
-          },
-          {
-            label: "Popular Hits",
-            data: [33, 45, 37, 21, 55, 74, 69],
+            label: playerNames[0],
+            data: clueData[0],
             fill: false,
             borderColor: "rgba(255,99,132,1)",
             lineTension: 0.1
           },
           {
-            label: "Featured",
-            data: [44, 19, 38, 46, 85, 66, 79],
+            label: playerNames[1],
+            data: clueData[1],
+            fill: false,
+            borderColor: "rgba(54, 162, 235, 1)",
+            lineTension: 0.1
+          },
+          {
+            label: playerNames[2],
+            data: clueData[2],
+            fill: false,
+            borderColor: "rgba(255, 206, 86, 1)",
+            lineTension: 0.1
+          },
+          {
+            label: playerNames[3],
+            data: clueData[3],
+            fill: false,
+            borderColor: "rgba(75, 192, 192, 1)",
+            lineTension: 0.1
+          },
+          {
+            label: playerNames[4],
+            data: clueData[4],
             fill: false,
             borderColor: "rgba(153, 102, 255, 1)",
             lineTension: 0.1
           },
           {
-            label: "Featured",
-            data: [60, 40, 11, 54, 85, 66, 79],
+            label: playerNames[5],
+            data: clueData[5],
             fill: false,
-            borderColor: "rgba(153, 240, 255, 1)",
+            borderColor: "rgba(255, 159, 64, 1)",
             lineTension: 0.1
           },
           {
-            label: "Featured",
-            data: [44, 19, 38, 46, 85, 66, 79],
+            label: playerNames[6],
+            data: clueData[6],
             fill: false,
-            borderColor: "rgba(153, 102, 255, 1)",
+            borderColor: "rgba(60, 200, 64, 1)",
+            lineTension: 0.1
+          },
+          {
+            label: playerNames[7],
+            data: clueData[7],
+            fill: false,
+            borderColor: "rgba(80, 80, 80, 1)",
             lineTension: 0.1
           }
         ]
@@ -112,7 +166,7 @@ function drawBarChart() {
             },
             scaleLabel: {
               display: true,
-              labelString: "Hits"
+              labelString: "Clues"
             }
           }
         ]
