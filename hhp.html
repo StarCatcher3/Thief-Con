@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hire A Hitman</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="templatemo-parallax-starter.css">
+
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="templatemo-nav">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">HIRE A HITMAN</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#services">SERVICES</a></li>
+                <li><a href="#gallery">GALLERY</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+            <ul class="hire-page" id="hirePopup">
+                <li id="hireTitle" data-name="NAME"><h2>HIRE {data-name} AS YOUR HITMAN</h2></li>
+                <li>DO YOU HAVE A PROMO CODE?</li>
+                <li><input id="promoCode" type="text" placeholder="Enter promo code"></li>
+                <li><button class="btn-submit" onclick="cancelHire()">CANCEL</button><button class="btn-submit" onclick="hireSubmit()">HIRE</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Section 1: Home / Hero -->
+    <section id="home" class="parallax-section">
+        <div class="parallax-bg" data-speed="0.5" style="background-image: url('public/hallway.jpeg')"></div>
+        <div class="parallax-overlay"></div>
+        <div class="section-content">
+            <h1 class="section-title hero-title">WELCOME TO OUR STUDIO</h1>
+            <p class="section-subtitle caps">WE CREATE BEAUTIFUL DIGITAL EXPERIENCES</p>
+            <a href="#about" class="btn-scroll">EXPLORE</a>
+        </div>
+    </section>
+
+    <!-- Section 2: About -->
+    <section id="about" class="parallax-section">
+        <div class="parallax-bg" data-speed="0.45" style="background-image: url('public/street.jpeg')"></div>
+        <div class="parallax-overlay"></div>
+        <div class="section-content">
+            <h2 class="section-title">ABOUT US</h2>
+            <div class="about-cols">
+                <div class="about-col">
+                    <div class="about-thumb thumb-top-left">
+                        <img src="public/Hire A Hitman.jpeg" alt="Our Team">
+                    </div>
+                    <p>Sometimes you just aren't able to fully carry out your own heists by yourself, and that is completely understandable and normal. That's where we come in. We provide an end to end service of hitmen that know how to get the job done right, and get away <em>in the most timely manner possible</em>.</p>
+                    <p>We take pride in the authenticity of our service. Every hit is personalized to the vision of the mission at hand. We invite you to peruse our selection of professional hitmen and contact the one that aligns best with your goals!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Services -->
+    <section id="services" class="parallax-section">
+        <div class="parallax-bg" data-speed="0.55" style="background-image: url('public/hitman.jpg')"></div>
+        <div class="parallax-overlay overlay-dark"></div>
+        <div class="section-content">
+            <h2 class="section-title">OUR SERVICES</h2>
+            <p class="section-subtitle caps">CHOOSE &middot; YOUR &middot; HIT</p>
+            <div class="services-grid">
+                <div class="about-col">
+                    <div class="about-thumb-wide">
+                        <img src="public/The Fence.PNG" alt="Our Process">
+                    </div>
+                    <h3>Choke-Out-Ray</h3>
+                    <p>I don't rely on tools to get the job done. My hands are all I need.</p>
+                    <button class="btn-submit" onclick="hireButtonClick('Choke-Out-Ray')">Hire</button>
+                </div>
+                <div class="about-col">
+                    <div class="about-thumb-wide">
+                        <img src="public/The Fence.PNG" alt="Our Process">
+                    </div>
+                    <h3>Poison-David</h3>
+                    <p>What you do not smell is called iocane powder. It is odorless, tasteless, dissolves instantly in liquid, and is among the more deadlier poisons known to man.</p>
+                    <button class="btn-submit" onclick="hireButtonClick('Poison-David')">Hire</button>
+                </div>
+                <div class="about-col">
+                    <div class="about-thumb-wide">
+                        <img src="public/john.JPG" alt="Our Process">
+                    </div>
+                    <h3>Snipey-John</h3>
+                    <p>I'd see it coming from a mile away, but they certainly wouldn't.</p>
+                    <button class="btn-submit" onclick="hireButtonClick('Snipey-John')">Hire</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Gallery -->
+    <section id="gallery" class="parallax-section">
+        <div class="parallax-bg" data-speed="0.5" style="background-image: url('public/skyline.jpeg')"></div>
+        <div class="parallax-overlay"></div>
+        <div class="section-content">
+            <h2 class="section-title">OUR WORK</h2>
+            <div class="content-block">
+                <p>From individual grudges to full fledged heists, our portfolio reflects a commitment to quality and attention to detail. Each mission is an opportunity to push boundaries and explore new methods.</p>
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="stat-number">150+</span>
+                        <span class="stat-label caps">MISSIONS COMPLETED</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">80+</span>
+                        <span class="stat-label caps">HAPPY CLIENTS</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">12</span>
+                        <span class="stat-label caps">YEARS OF EXPERIENCE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Contact -->
+    <section id="contact" class="parallax-section">
+        <div class="parallax-bg" data-speed="0.5" style="background-image: url('public/world.jpg')"></div>
+        <div class="parallax-overlay overlay-medium"></div>
+        <div class="section-content">
+            <h2 class="section-title">GET IN TOUCH</h2>
+            <p class="section-subtitle caps">LET'S FINISH SOMETHING TOGETHER</p>
+            <div class="contact-form-wrap">
+                <form id="contactForm" class="contact-form">
+                    <div class="form-row">
+                        <input type="text" placeholder="Your name" required>
+                        <input type="email" placeholder="Your email" required>
+                    </div>
+                    <textarea placeholder="Your message" rows="5" required></textarea>
+                    <button type="submit" class="btn-submit">SEND MESSAGE</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script src="templatemo-parallax-script.js"></script>
+</body>
+</html>
