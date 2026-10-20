@@ -205,17 +205,3 @@ function cancelHire() {
     promoCode.value = "";
     hirePopup.classList.remove('open');
 }
-
-function hireSubmit() {
-    if (promoCode.value.trim() == "") {
-        alert(hireName + " is not accepting new clients at this time. Please try again later.");
-        cancelHire();
-    } else if (hireName == "Snipey-John" && promoCode.value.toUpperCase() == "VALID") {
-        window.location.href = "redirect.html";
-    } else {
-        alert("Invalid promo code for " + hireName + ". Please try again.");
-        promoCode.value = "";
-    }
-    
-    
-}

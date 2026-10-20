@@ -79,11 +79,13 @@ const hlpSubmit = () => {
       } else {
         window.location.href = "redirect.html?redirect=tacp.html"
       }
+    } else {
+      if (!transferred) {
+        alert("₮Ⱨ₳₦₭ ɎØɄ ₣ØⱤ ɎØɄⱤ ₥Ɇ₴₴₳₲Ɇ");
+      }
     }
   }));
-  if (!transferred) {
-    alert("₮Ⱨ₳₦₭ ɎØɄ ₣ØⱤ ɎØɄⱤ ₥Ɇ₴₴₳₲Ɇ");
-  }
+  
 }
 
 const tacpProceed = () => {
@@ -95,36 +97,64 @@ const tacpProceed = () => {
   }, body: JSON.stringify({ hhp: getTime() }) }).then(r => r.json().then(d => window.location.href = "redirect.html?redirect=hhp.html"));
 }
 
-const getProgressId = (playerId) => {
-  fetch(`${apiUrl}/clues?id=eq.${playerId}&apikey=${apiKey}`).then(response => response.json().then(data => {
+const hhpSubmit = () => {
+  const playerId = window.localStorage.getItem("player_id");
+    if (promoCode.value.trim() == "") {
+        alert(hireName + " is not accepting new clients at this time. Please try again later.");
+        cancelHire();
+    } else if (hireName == "Snipey-John") {
+      fetch(`${apiUrl}/clues?id=eq.${playerId}&kmp_promo=eq.${promoCode.value.toUpperCase()}&apikey=${apiKey}`).then(response => response.json().then(data => {
+        if (data.length > 0) {
+          if (data[0].kmp == null ) {
+            fetch(`${apiUrl}/clues?id=eq.${playerId}`, { method: 'PATCH', headers: {
+              'Content-Type': 'application/json',
+              'apikey': apiKey,
+              'Prefer': 'return=representation'
+            }, body: JSON.stringify({ kmp: getTime() }) }).then(r => r.json().then(d => window.location.href = "redirect.html?redirect=kmp.html"));
+          } else {
+            window.location.href = "redirect.html?redirect=kmp.html"
+          }
+        } else {
+          alert("Invalid promo code for " + hireName + ". Please try again.");
+          promoCode.value = "";
+        }
+      }));
+    } else {
+      alert("Invalid promo code for " + hireName + ". Please try again.");
+      promoCode.value = "";
+    }
+}
+
+const kmpSubmit = () => {
+  const playerId = window.localStorage.getItem("player_id");
+  const tafpPin = document.getElementById("tafp-pin").value;
+  fetch(`${apiUrl}/clues?id=eq.${playerId}&tafp_pin=eq.${tafpPin.toUpperCase()}&apikey=${apiKey}`).then(response => response.json().then(data => {
     if (data.length > 0) {
-      console.log("Player Data: ", data[0]);
-      if (data[0].hlp == null) {
-        return 0;
-      } else if (data[0].tacp == null && data[0].kbpp == null) {
-        return 1;
-      } else if (data[0].kbpp != null && data[0].tacp == null) {
-        return 2;
-      } else if (data[0].kbpp == null && data[0].tacp != null && data[0].hhp == null) {
-        return 3;
-      } else if (data[0].kbpp != null && data[0].tacp != null && data[0].hhp == null) {
-        return 4;
-      } else if (data[0].kbpp == null && data[0].tacp != null && data[0].hhp != null) {
-        return 5;
-      } else if (data[0].kbpp != null && data[0].tacp != null && data[0].hhp != null && data[0].kmp == null) {
-        return 6;
-      } else if (data[0].kmp != null && data[0].tafp == null) {
-        return 7;
-      } else if (data[0].tafp != null && data[0].knp == null) {
-        return 8;
-      } else if (data[0].knp != null) {
-        return 9;
+      if (data[0].tafp == null ) {
+        fetch(`${apiUrl}/clues?id=eq.${playerId}`, { method: 'PATCH', headers: {
+          'Content-Type': 'application/json',
+          'apikey': apiKey,
+          'Prefer': 'return=representation'
+        }, body: JSON.stringify({ tafp: getTime() }) }).then(r => r.json().then(d => window.location.href = "redirect.html?redirect=tafp.html"));
+      } else {
+        window.location.href = "redirect.html?redirect=tafp.html"
       }
     } else {
-      return 0;
+      alert("Invalid PIN Code. Please try again.");
+      document.getElementById("tafp-pin").value = "";
     }
   }));
 }
+
+const tafpProceed = () => {
+  const playerId = window.localStorage.getItem("player_id");
+  fetch(`${apiUrl}/clues?id=eq.${playerId}&knp=is.null`, { method: 'PATCH', headers: {
+    'Content-Type': 'application/json',
+    'apikey': apiKey,
+    'Prefer': 'return=representation'
+  }, body: JSON.stringify({ knp: getTime() }) }).then(r => r.json().then(d => window.location.href = "redirect.html?redirect=knp.html"));
+}
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const playerId = window.localStorage.getItem("player_id");
@@ -154,6 +184,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         if (data[0].hhp != null) {
           newNavBarText += `<a href="hhp.html" class="w3-button" style="flex:1; background-color: black; color: white;">Hitman</a>`;
+        }
+        if (data[0].kmp != null) {
+          newNavBarText += `<a href="kmp.html" class="w3-button" style="flex:1;">News</a>`;
+        }
+        if (data[0].tafp != null) {
+          newNavBarText += `<a href="tafp.html" class="w3-button" style="flex:1; background-color: #17365d; color: white;">Flights</a>`;
+        }
+        if (data[0].knp != null) {
+          newNavBarText += `<a href="knp.html" class="w3-button" style="flex:1;">Booked</a>`;
         }
       }
       document.getElementById("nav-bar-bottom").innerHTML = newNavBarText;

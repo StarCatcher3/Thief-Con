@@ -4,6 +4,7 @@ const apiKey = "sb_publishable_dHy6cc66QpvaMCZ3-rKrCg_6DJ9YP4C"
 
 const timeDataPoints = 10;
 let progressData = [0, 0, 0, 0, 0, 0, 0, 0];
+let clueList = [[], [], [], [], [], [], [], []]
 let playerNames = ["Player 1", "Player 2", "Player 3", "Player 4", "Player 5", "Player 6", "Player 7", "Player 8"];
 let clueData = [[], [], [], [], [], [], [], []]
 let timeLabels = []
@@ -16,21 +17,22 @@ const resetData = () => {
           'Prefer': 'return=representation'
         }, body: JSON.stringify({ hlp: null, kbpp: null, tacp: null, hhp: null, kmp: null, tafp: null, knp: null }) }).then(r => r.json().then(d => alert("Data Reset!")));
   }
-  
 }
 
 const updateData = async () => {
     fetch(`${apiUrl}/clues?apikey=${apiKey}`).then(response => response.json().then(data => {
       const playerData = data.map(player => {
-        const cluesFound = [player.hlp, player.kbpp, player.tacp, player.hhp, player.kmp, player.tafp, player.knp]
-          .filter(clue => clue !== null)
-          .map(time => {
-            const date = new Date();
-            date.setHours(...time.split(":").map(Number), 0);
-            return date;
-          });
+        const clueValues = [player.hlp_username, player.hlp_password, player.kbpp_value, player.tacp_code, player.kmp_promo, player.tafp_pin];
+        const cluesList = [player.hlp, player.kbpp, player.tacp, player.hhp, player.kmp, player.tafp, player.knp];
+        const clueListBool = cluesList.map(clue => clue ? true : false);
+        const cluesFound = cluesList.filter(clue => clue !== null)
+                                  .map(time => {
+                                    const date = new Date();
+                                    date.setHours(...time.split(":").map(Number), 0);
+                                    return date;
+                                  });
         const cluesFoundCount = cluesFound.length;
-        return {name: player.hlp_username, clueCount: cluesFoundCount, clueTimes: cluesFound};
+        return {name: player.hlp_username, clueCount: cluesFoundCount, clueTimes: cluesFound, clueList: clueListBool, clueValues: clueValues};
       });
       playerNames = playerData.map(player => player.name);
       progressData = playerData.map(player => player.clueCount);
@@ -38,15 +40,13 @@ const updateData = async () => {
       if (allClueTimes.length > 0) {
         const clueTimes = playerData.map(player => player.clueTimes);
         const timeRange = [Math.min(...allClueTimes), Math.max(...allClueTimes)];
-        const timeStep = (timeRange[1] - timeRange[0]) / timeDataPoints;
-        console.log("Time Range: " + timeRange);
-        console.log("Time Step: " + timeStep);
+        const timeStep = Math.max((timeRange[1] - timeRange[0]) / timeDataPoints, 1);
 
         timeLabels = []
         let clueTimeData = []
         for (time = timeRange[0]; time <= timeRange[1]; time += timeStep) {
           const date = new Date(time)
-          timeLabels.push(`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`)
+          timeLabels.push(`${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}`)
           clueTimeData.push(clueTimes.map(c => c.filter(t => t <= time + timeStep).length))
         }
         clueData = clueTimeData[0].map((_, colIndex) =>
@@ -59,6 +59,62 @@ const updateData = async () => {
 
       drawLineChart(); // Line Chart
       drawBarChart(); // Bar Chart
+      
+      playerClues = playerData.map(player => player.clueList);
+      playerClueValues = playerData.map(player => player.clueValues);
+      for (i = 0; i < playerNames.length; i++) {
+        for (j = 0; j < playerClues[i].length; j++) {
+          pageList = document.getElementById(`page-${j}-list`)
+          if (i == 0) {
+            pageList.innerHTML = "";
+          }
+          if (playerClues[i][j]) {
+            pageList.innerHTML += (pageList.innerHTML == "" ? "" :  ", ") + playerNames[i];
+          }
+        }
+        document.getElementById(`player-${i}-name`).innerHTML = playerNames[i];
+        if (!playerClues[i][0]) {
+          document.getElementById(`player-${i}-clue1`).innerHTML = `username: ${playerClueValues[i][0]}`;
+          document.getElementById(`player-${i}-clue2`).innerHTML = `password: ${playerClueValues[i][1]}`;
+          document.getElementById(`player-${i}-step`).innerHTML = "Hacked Landing Page";
+        } else if (!playerClues[i][1] && !playerClues[i][2]) {
+          document.getElementById(`player-${i}-clue1`).innerHTML = `Safe Code: ${playerClueValues[i][3]}`;
+          document.getElementById(`player-${i}-clue2`).innerHTML = `Group Value: ${playerClueValues[i][2]}`;
+          document.getElementById(`player-${i}-step`).innerHTML = "French Hacked Landing Page";
+        } else if (!playerClues[i][1] && playerClues[i][2] && !playerClues[i][3]) {
+          document.getElementById(`player-${i}-clue1`).innerHTML = `Group Value: ${playerClueValues[i][2]}`;
+          document.getElementById(`player-${i}-clue2`).innerHTML = "French Instructions: Select Cambriolage, Insert 'Professor Getsshot', Take Pro Package";
+          document.getElementById(`player-${i}-step`).innerHTML = "Q-A-None Page";
+        } else if (playerClues[i][1] && !playerClues[i][2]) {
+          document.getElementById(`player-${i}-clue1`).innerHTML = `Safe Code: ${playerClueValues[i][3]}`;
+          document.getElementById(`player-${i}-clue2`).innerHTML = "French Instructions: Select Cambriolage, Insert 'Professor Getsshot', Take Pro Package";
+          document.getElementById(`player-${i}-step`).innerHTML = "French Hacked Landing Page";
+        } else if (!playerClues[i][1] && playerClues[i][2] && playerClues[i][3]) {
+          document.getElementById(`player-${i}-clue1`).innerHTML = `Safe Code: ${playerClueValues[i][3]}`;
+          document.getElementById(`player-${i}-clue2`).innerHTML = `Promo Code: ${playerClueValues[i][4]}`;
+          document.getElementById(`player-${i}-step`).innerHTML = "Q-A-None";
+        } else if (playerClues[i][1] && playerClues[i][2] && !playerClues[i][3]) {
+          document.getElementById(`player-${i}-clue1`).innerHTML = "French Instructions: Select Cambriolage, Insert 'Professor Getsshot', Take Pro Package";
+          document.getElementById(`player-${i}-clue2`).innerHTML = `Promo Code: ${playerClueValues[i][4]}`;
+          document.getElementById(`player-${i}-step`).innerHTML = "Hire A Hitman Page";
+        } else if (!playerClues[i][4]) {
+          document.getElementById(`player-${i}-clue1`).innerHTML = `Promo Code: ${playerClueValues[i][4]}`;
+          document.getElementById(`player-${i}-clue2`).innerHTML = `Symbols PIN: ${playerClueValues[i][5]}`;
+          document.getElementById(`player-${i}-step`).innerHTML = "News Article Page";
+        } else if (!playerClues[i][5]) {
+          document.getElementById(`player-${i}-clue1`).innerHTML = `Symbols PIN: ${playerClueValues[i][5]}`;
+          document.getElementById(`player-${i}-clue2`).innerHTML = `Flight Number: UA987`;
+          document.getElementById(`player-${i}-step`).innerHTML = "Flight Website Page";
+        }  else if (!playerClues[i][6]) {
+          document.getElementById(`player-${i}-clue1`).innerHTML = `Flight Number: UA987`;
+          document.getElementById(`player-${i}-clue2`).innerHTML = "No More Clues";
+          document.getElementById(`player-${i}-step`).innerHTML = "United Tickets Receipt Page";
+        } else {k =
+          document.getElementById(`player-${i}-clue1`).innerHTML = "No More Clues";
+          document.getElementById(`player-${i}-clue2`).innerHTML = "No More Clues";
+          document.getElementById(`player-${i}-step`).innerHTML = "All Pages Found";
+        }
+      }
     }));
 }
 

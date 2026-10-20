@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Daily Burglar</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4 {font-family:"Lato", sans-serif}
+.mySlides {display:none}
+.w3-tag, .fa {cursor:pointer}
+.w3-tag {height:15px;width:15px;padding:0;margin-top:6px}
+</style>
+</head>
+<body>
+
+<script src="app.js"></script>
+
+<!-- Content -->
+<div class="w3-content" style="max-width:1100px;margin-bottom:80px">
+
+  <!-- Who We Are -->
+  <div class="w3-container" id="about">
+    <div class="w3-grid" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px">
+      <div>
+        <div class="w3-card-4">
+          <img src="/Thief-Con/public/newspaper.jpg" alt="Newspaper Article" style="width:100%">
+          <div class="w3-container">
+            <h3>Daily Burglar</h3>
+            <p class="w3-opacity">He got away</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div class="w3-center w3-padding-64" id="contact">
+    <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Symbols</span>
+  </div>
+
+  <div class="w3-container">
+    <div class="w3-section">
+      <label>Message</label>
+      <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" name="Message" id="tafp-pin" required>
+    </div>
+    <button onclick="kmpSubmit()" class="w3-button w3-block w3-black">Send</button>
+  </div>
+</div>
+
+
+<!-- Links (sit on bottom) -->
+<div class="w3-bottom">
+  <nav class="w3-flex w3-large w3-light-grey" id="nav-bar-bottom">
+    <a href="#" class="w3-button" style="flex:1">Home</a>
+    <a href="#plans" class="w3-button" style="flex:1">Plans</a>
+    <a href="#about" class="w3-button" style="flex:1">About</a>
+    <a href="#contact" class="w3-button" style="flex:1">Contact</a>
+  </nav>
+</div>
+
+</body>
+</html>
