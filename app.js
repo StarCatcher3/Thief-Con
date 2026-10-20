@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         if (!symbolValue.includes("C")) {
           document.getElementById("c-image").removeAttribute("hidden");
-          document.getElementById("c-text").innerHTML = `<em style="color: #B89968">Clean</em>`;
+          document.getElementById("c-text").innerHTML = `<em style="color: #B89968"><strong>C</strong>lean</em>`;
         }
       } else if (page == "tacp.html") {
         if (!symbolValue.includes("F")) {
@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
           document.getElementById("o-button").setAttribute("onclick", "hireButtonClick('CHoKE-OUT-RAY')");
         }
         if (!symbolValue.includes("E")) {
-          document.getElementById("e-trigger").setAttribute("onclick", "document.getElementById('e-image').removeAttribute('hidden');");
+          document.getElementById("e-trigger").setAttribute("onclick", `document.getElementById('e-image').removeAttribute('hidden'); document.getElementById("e-color").setAttribute("style", "color:#D8C9B8");`);
         }
       } else if (page == "kmp.html") {
         symbols = document.getElementById("symbols");
