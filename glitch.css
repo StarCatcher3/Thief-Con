@@ -107,7 +107,7 @@ body {
   }
   100% {
     --left: .083;
-    --v-height: 30%;
+    --v-height: 50%;
     --top: 1;
   }
 }
@@ -131,7 +131,7 @@ body {
   }
   60% {
     --left: -.03;
-    --v-height: 35%;
+    --v-height: 70%;
     --top: 6;
   }
   80% {

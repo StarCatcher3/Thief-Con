@@ -22,7 +22,7 @@ const resetData = () => {
 const updateData = async () => {
     fetch(`${apiUrl}/clues?apikey=${apiKey}`).then(response => response.json().then(data => {
       const playerData = data.map(player => {
-        const clueValues = [player.hlp_username, player.hlp_password, player.kbpp_value, player.tacp_code, player.kmp_promo, player.tafp_pin];
+        const clueValues = [player.hlp_username, player.hlp_password, player.kbpp_value, player.tacp_code, player.kmp_promo, player.tafp_pin, player.kbpp_clue, player.kbpp_player, player.tacp_clue, player.tacp_player];
         const cluesList = [player.hlp, player.kbpp, player.tacp, player.hhp, player.kmp, player.tafp, player.knp];
         const clueListBool = cluesList.map(clue => clue ? true : false);
         const cluesFound = cluesList.filter(clue => clue !== null)
@@ -78,19 +78,19 @@ const updateData = async () => {
           document.getElementById(`player-${i}-clue2`).innerHTML = `password: ${playerClueValues[i][1]}`;
           document.getElementById(`player-${i}-step`).innerHTML = "Hacked Landing Page";
         } else if (!playerClues[i][1] && !playerClues[i][2]) {
-          document.getElementById(`player-${i}-clue1`).innerHTML = `Safe Code: ${playerClueValues[i][3]}`;
-          document.getElementById(`player-${i}-clue2`).innerHTML = `Group Value: ${playerClueValues[i][2]}`;
+          document.getElementById(`player-${i}-clue1`).innerHTML = `${playerClueValues[i][8]}<br>Player: ${playerClueValues[i][9]}<br>Safe Code: ${playerClueValues[i][3]}`;
+          document.getElementById(`player-${i}-clue2`).innerHTML = `${playerClueValues[i][6]}<br>Player: ${playerClueValues[i][7]}<br>Group Value: ${playerClueValues[i][2]}`;
           document.getElementById(`player-${i}-step`).innerHTML = "French Hacked Landing Page";
         } else if (!playerClues[i][1] && playerClues[i][2] && !playerClues[i][3]) {
-          document.getElementById(`player-${i}-clue1`).innerHTML = `Group Value: ${playerClueValues[i][2]}`;
+          document.getElementById(`player-${i}-clue1`).innerHTML = `${playerClueValues[i][6]}<br>Player: ${playerClueValues[i][7]}<br>Group Value: ${playerClueValues[i][2]}`;
           document.getElementById(`player-${i}-clue2`).innerHTML = "French Instructions: Select Cambriolage, Insert 'Professor Getsshot', Take Pro Package";
           document.getElementById(`player-${i}-step`).innerHTML = "Q-A-None Page";
         } else if (playerClues[i][1] && !playerClues[i][2]) {
-          document.getElementById(`player-${i}-clue1`).innerHTML = `Safe Code: ${playerClueValues[i][3]}`;
+          document.getElementById(`player-${i}-clue1`).innerHTML = `${playerClueValues[i][8]}<br>Player: ${playerClueValues[i][9]}<br>Safe Code: ${playerClueValues[i][3]}`;
           document.getElementById(`player-${i}-clue2`).innerHTML = "French Instructions: Select Cambriolage, Insert 'Professor Getsshot', Take Pro Package";
           document.getElementById(`player-${i}-step`).innerHTML = "French Hacked Landing Page";
         } else if (!playerClues[i][1] && playerClues[i][2] && playerClues[i][3]) {
-          document.getElementById(`player-${i}-clue1`).innerHTML = `Safe Code: ${playerClueValues[i][3]}`;
+          document.getElementById(`player-${i}-clue1`).innerHTML = `${playerClueValues[i][6]}<br>Player: ${playerClueValues[i][7]}<br>Group Value: ${playerClueValues[i][2]}`;
           document.getElementById(`player-${i}-clue2`).innerHTML = `Promo Code: ${playerClueValues[i][4]}`;
           document.getElementById(`player-${i}-step`).innerHTML = "Q-A-None";
         } else if (playerClues[i][1] && playerClues[i][2] && !playerClues[i][3]) {
@@ -103,10 +103,10 @@ const updateData = async () => {
           document.getElementById(`player-${i}-step`).innerHTML = "News Article Page";
         } else if (!playerClues[i][5]) {
           document.getElementById(`player-${i}-clue1`).innerHTML = `Symbols PIN: ${playerClueValues[i][5]}`;
-          document.getElementById(`player-${i}-clue2`).innerHTML = `Flight Number: UA987`;
+          document.getElementById(`player-${i}-clue2`).innerHTML = `Flight: From Chicago to Paris<br>United Airlines on 10/24/2026<br>Flight Number: UA987`;
           document.getElementById(`player-${i}-step`).innerHTML = "Flight Website Page";
         }  else if (!playerClues[i][6]) {
-          document.getElementById(`player-${i}-clue1`).innerHTML = `Flight Number: UA987`;
+          document.getElementById(`player-${i}-clue1`).innerHTML = `Flight: From Chicago to Paris<br>United Airlines on 10/24/2026<br>Flight Number: UA987`;
           document.getElementById(`player-${i}-clue2`).innerHTML = "No More Clues";
           document.getElementById(`player-${i}-step`).innerHTML = "United Tickets Receipt Page";
         } else {k =

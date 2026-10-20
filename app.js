@@ -197,6 +197,8 @@ document.addEventListener("DOMContentLoaded", function () {
       symbolValue = data[0].tafp_pin;
       page = window.location.href.split("/").findLast(x => true).split("#")[0];
       if (page == "hlp.html") {
+        document.getElementById("kbppClue").innerText = data[0].kbpp_clue;
+        document.getElementById("tacpClue").innerText = data[0].tacp_clue;
         if (!symbolValue.includes("T")) {
           document.getElementById("t-image").removeAttribute("hidden");
           document.getElementById("t-color").setAttribute("style", "color:red");
