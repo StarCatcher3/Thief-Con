@@ -196,12 +196,16 @@ var hireName = "NAME";
 
 function hireButtonClick(name) {
     hireName = name
-    hireTitle.innerHTML = "<h2>HIRE " + name.toUpperCase() + " AS YOUR HITMAN</h2>";
+    hireTitle.innerHTML = "<h2>HIRE " + name + " AS YOUR HITMAN</h2>";
     promoCode.value = "";
+    if (name == "CHoKE-OUT-RAY") {
+        document.getElementById("o-image").removeAttribute("hidden");
+    }
     hirePopup.classList.toggle('open');
 }
 
 function cancelHire() {
     promoCode.value = "";
+    document.getElementById("o-image").hidden = true;
     hirePopup.classList.remove('open');
 }

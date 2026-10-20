@@ -34,6 +34,7 @@
             <ul class="hire-page" id="hirePopup">
                 <li id="hireTitle" data-name="NAME"><h2>HIRE {data-name} AS YOUR HITMAN</h2></li>
                 <li>DO YOU HAVE A PROMO CODE?</li>
+                <li><img id="o-image" hidden style="width: 20px; height: auto;" src="public/symbol (O).jpg"></li>
                 <li><input id="promoCode" type="text" placeholder="Enter promo code"></li>
                 <li><button class="btn-submit" onclick="cancelHire()">CANCEL</button><button class="btn-submit" onclick="hhpSubmit()">HIRE</button></li>
             </ul>
@@ -47,7 +48,8 @@
         <div class="section-content">
             <h1 class="section-title hero-title">WELCOME TO YOUR NEXT PARTNERSHIP</h1>
             <p class="section-subtitle caps">WE PROMOTE CONNECTION BETWEEN PROFESSIONALS THAT CAN HELP EACH OTHER OUT</p>
-            <a href="#about" class="btn-scroll">EXPLORE</a>
+            <a id="e-trigger" href="#about" class="btn-scroll">EXPLORE</a>
+            <img id="e-image" hidden style="position: absolute; left: 50%; transform: translate(-50%, 4em); width: 50px; height: auto;" src="public/symbol (E).jpg">
         </div>
     </section>
 
@@ -83,7 +85,7 @@
                     </div>
                     <h3>Choke-Out-Ray</h3>
                     <p>I don't rely on tools to get the job done. My hands are all I need.</p>
-                    <button class="btn-submit" onclick="hireButtonClick('Choke-Out-Ray')">Hire</button>
+                    <button id="o-button" class="btn-submit" onclick="hireButtonClick('CHOKE-OUT-RAY')">Hire</button>
                 </div>
                 <div class="about-col">
                     <div class="about-thumb-wide">
@@ -91,7 +93,7 @@
                     </div>
                     <h3>Poison-David</h3>
                     <p>What you do not smell is called iocane powder. It is odorless, tasteless, dissolves instantly in liquid, and is among the more deadlier poisons known to man.</p>
-                    <button class="btn-submit" onclick="hireButtonClick('Poison-David')">Hire</button>
+                    <button class="btn-submit" onclick="hireButtonClick('POISON-DAVID')">Hire</button>
                 </div>
                 <div class="about-col">
                     <div class="about-thumb-wide">
@@ -99,7 +101,7 @@
                     </div>
                     <h3>Snipey-John</h3>
                     <p>I'd see it coming from a mile away, but they certainly wouldn't.</p>
-                    <button class="btn-submit" onclick="hireButtonClick('Snipey-John')">Hire</button>
+                    <button class="btn-submit" onclick="hireButtonClick('SNIPEY-JOHN')">Hire</button>
                 </div>
             </div>
         </div>

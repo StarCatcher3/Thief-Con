@@ -102,7 +102,7 @@ const hhpSubmit = () => {
     if (promoCode.value.trim() == "") {
         alert(hireName + " is not accepting new clients at this time. Please try again later.");
         cancelHire();
-    } else if (hireName == "Snipey-John") {
+    } else if (hireName == "SNIPEY-JOHN") {
       fetch(`${apiUrl}/clues?id=eq.${playerId}&kmp_promo=eq.${promoCode.value.toUpperCase()}&apikey=${apiKey}`).then(response => response.json().then(data => {
         if (data.length > 0) {
           if (data[0].kmp == null ) {
@@ -155,7 +155,6 @@ const tafpProceed = () => {
   }, body: JSON.stringify({ knp: getTime() }) }).then(r => r.json().then(d => window.location.href = "redirect.html?redirect=knp.html"));
 }
 
-
 document.addEventListener("DOMContentLoaded", function () {
   const playerId = window.localStorage.getItem("player_id");
   document.getElementById("nav-bar-bottom").innerHTML = window.localStorage.getItem("navbar") || `
@@ -194,6 +193,50 @@ document.addEventListener("DOMContentLoaded", function () {
         if (data[0].knp != null) {
           newNavBarText += `<a href="knp.html" class="w3-button" style="flex:1;">Booked</a>`;
         }
+      }
+      symbolValue = data[0].tafp_pin;
+      page = window.location.href.split("/").findLast(x => true).split("#")[0];
+      if (page == "hlp.html") {
+        if (!symbolValue.includes("T")) {
+          document.getElementById("t-image").removeAttribute("hidden");
+          document.getElementById("t-color").setAttribute("style", "color:red");
+        }
+        if (!symbolValue.includes("H")) {
+          document.getElementById("h-image").removeAttribute("hidden");
+          document.getElementById("h-color").setAttribute("style", "color:#1af0dc");
+        }
+      } else if (page == "kbpp.html") {
+        document.getElementById("personal-promo-code").innerText = data[0].kmp_promo;
+        if (!symbolValue.includes("I")) {
+          document.getElementById("i-image").removeAttribute("hidden");
+          document.getElementById("i-text").innerText = "";
+        }
+        if (!symbolValue.includes("C")) {
+          document.getElementById("c-image").removeAttribute("hidden");
+          document.getElementById("c-text").innerHTML = `<em style="color: #B89968">Clean</em>`;
+        }
+      } else if (page == "tacp.html") {
+        if (!symbolValue.includes("F")) {
+          document.getElementById("f-image").removeAttribute("hidden");
+          document.getElementById("f-color").setAttribute("style", "color:green");
+        }
+        if (!symbolValue.includes("N")) {
+          document.getElementById("n-image").removeAttribute("hidden");
+          document.getElementById("n-glitch").setAttribute("class", "glitch");
+        }
+      } else if (page == "hhp.html") {
+        if (!symbolValue.includes("O")) {
+          document.getElementById("o-button").setAttribute("onclick", "hireButtonClick('CHoKE-OUT-RAY')");
+        }
+        if (!symbolValue.includes("E")) {
+          document.getElementById("e-trigger").setAttribute("onclick", "document.getElementById('e-image').removeAttribute('hidden');");
+        }
+      } else if (page == "kmp.html") {
+        symbols = document.getElementById("symbols");
+        symbols.innerHTML = "";
+        symbolValue.split("").forEach(letter => {
+          symbols.innerHTML += `<img style="max-width: 80px; max-height: 80px; padding: 10px; margin: 10px;" src="public/symbol (${letter}).jpg">`
+        });
       }
       document.getElementById("nav-bar-bottom").innerHTML = newNavBarText;
       window.localStorage.setItem("navbar", newNavBarText);
