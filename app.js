@@ -218,7 +218,7 @@ document.addEventListener("DOMContentLoaded", function () {
       } else if (page == "tacp.html") {
         if (!symbolValue.includes("F")) {
           document.getElementById("f-image").removeAttribute("hidden");
-          document.getElementById("f-color").setAttribute("style", "color:1af0dc");
+          document.getElementById("f-color").setAttribute("style", "color:#1af0dc");
         }
         if (!symbolValue.includes("N")) {
           document.getElementById("n-image").removeAttribute("hidden");
