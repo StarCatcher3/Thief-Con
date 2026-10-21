@@ -46,30 +46,12 @@ const indexSubmit = () => {
   }));
 }
 
-const hlpSubmit = () => {
-  const kbppValue = document.getElementById("kbpp-value").value;
+const hlpSubmitName = () => {
   const tacpCode = document.getElementById("tacp-code").value;
-  document.getElementById("kbpp-value").value = "";
   document.getElementById("tacp-code").value = "";
-  let transferred = false;
   const playerId = window.localStorage.getItem("player_id");
-  fetch(`${apiUrl}/clues?id=eq.${playerId}&kbpp_value=eq.${kbppValue}&apikey=${apiKey}`).then(response => response.json().then(data => {
-    if (data.length > 0) {
-      transferred = true;
-      if (data[0].kbpp == null ) {
-        fetch(`${apiUrl}/clues?id=eq.${playerId}`, { method: 'PATCH', headers: {
-          'Content-Type': 'application/json',
-          'apikey': apiKey,
-          'Prefer': 'return=representation'
-        }, body: JSON.stringify({ kbpp: getTime() }) }).then(r => r.json().then(d => window.location.href = "redirect.html?redirect=kbpp.html"));
-      } else {
-        window.location.href = "redirect.html?redirect=kbpp.html"
-      }
-    }
-  }));
   fetch(`${apiUrl}/clues?id=eq.${playerId}&tacp_code=eq.${tacpCode}&apikey=${apiKey}`).then(response => response.json().then(data => {
     if (data.length > 0) {
-      transferred = true;
       if (data[0].tacp == null ) {
         fetch(`${apiUrl}/clues?id=eq.${playerId}`, { method: 'PATCH', headers: {
           'Content-Type': 'application/json',
@@ -80,12 +62,31 @@ const hlpSubmit = () => {
         window.location.href = "redirect.html?redirect=tacp.html"
       }
     } else {
-      if (!transferred) {
-        alert("₮Ⱨ₳₦₭ ɎØɄ ₣ØⱤ ɎØɄⱤ ₥Ɇ₴₴₳₲Ɇ");
-      }
+      alert("☊⌾⏙ ⟟ ⏧☊⌾⏙ ⏙ℍ⌾ ⍦⌾⌰ ⍲☈ℇ");
     }
   }));
   
+}
+
+const hlpSubmitMessage = () => {
+  const kbppValue = document.getElementById("kbpp-value").value;
+  document.getElementById("kbpp-value").value = "";
+  const playerId = window.localStorage.getItem("player_id");
+  fetch(`${apiUrl}/clues?id=eq.${playerId}&kbpp_value=eq.${kbppValue}&apikey=${apiKey}`).then(response => response.json().then(data => {
+    if (data.length > 0) {
+      if (data[0].kbpp == null ) {
+        fetch(`${apiUrl}/clues?id=eq.${playerId}`, { method: 'PATCH', headers: {
+          'Content-Type': 'application/json',
+          'apikey': apiKey,
+          'Prefer': 'return=representation'
+        }, body: JSON.stringify({ kbpp: getTime() }) }).then(r => r.json().then(d => window.location.href = "redirect.html?redirect=kbpp.html"));
+      } else {
+        window.location.href = "redirect.html?redirect=kbpp.html"
+      }
+    } else {
+      alert("₮Ⱨ₳₦₭ ɎØɄ ₣ØⱤ ɎØɄⱤ ₥Ɇ₴₴₳₲Ɇ");
+    }
+  }));  
 }
 
 const tacpProceed = () => {

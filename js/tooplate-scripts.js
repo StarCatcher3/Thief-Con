@@ -2,7 +2,7 @@ const width_threshold = 480;
 const apiUrl = "https://geljnhjhktydutfoujqo.supabase.co/rest/v1"
 const apiKey = "sb_publishable_dHy6cc66QpvaMCZ3-rKrCg_6DJ9YP4C"
 
-const timeDataPoints = 10;
+const timeDataPoints = 15;
 let progressData = [0, 0, 0, 0, 0, 0, 0, 0];
 let clueList = [[], [], [], [], [], [], [], []]
 let playerNames = ["Player 1", "Player 2", "Player 3", "Player 4", "Player 5", "Player 6", "Player 7", "Player 8"];
@@ -15,12 +15,15 @@ const resetData = () => {
           'Content-Type': 'application/json',
           'apikey': apiKey,
           'Prefer': 'return=representation'
-        }, body: JSON.stringify({ hlp: null, kbpp: null, tacp: null, hhp: null, kmp: null, tafp: null, knp: null }) }).then(r => r.json().then(d => alert("Data Reset!")));
+        }, body: JSON.stringify({ hlp: null, kbpp: null, tacp: null, hhp: null, kmp: null, tafp: null, knp: null }) }).then(r => r.json().then(d => {
+          alert("Data Reset!");
+          window.reloadPage();
+    }));
   }
 }
 
 const updateData = async () => {
-    fetch(`${apiUrl}/clues?apikey=${apiKey}`).then(response => response.json().then(data => {
+    fetch(`${apiUrl}/clues?apikey=${apiKey}&order=id`).then(response => response.json().then(data => {
       const playerData = data.map(player => {
         const clueValues = [player.hlp_username, player.hlp_password, player.kbpp_value, player.tacp_code, player.kmp_promo, player.tafp_pin, player.kbpp_clue, player.kbpp_player, player.tacp_clue, player.tacp_player];
         const cluesList = [player.hlp, player.kbpp, player.tacp, player.hhp, player.kmp, player.tafp, player.knp];
@@ -42,12 +45,15 @@ const updateData = async () => {
         const timeRange = [Math.min(...allClueTimes), Math.max(...allClueTimes)];
         const timeStep = Math.max((timeRange[1] - timeRange[0]) / timeDataPoints, 1);
 
-        timeLabels = []
-        let clueTimeData = []
+        timeLabels = [];
+        let clueTimeData = [];
+        const date = new Date(timeRange[0] - timeStep);
+        timeLabels.push(`${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}`)
+        clueTimeData.push(clueTimes.map(c => 0));
         for (time = timeRange[0]; time <= timeRange[1]; time += timeStep) {
-          const date = new Date(time)
-          timeLabels.push(`${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}`)
-          clueTimeData.push(clueTimes.map(c => c.filter(t => t <= time + timeStep).length))
+          const date = new Date(time);
+          timeLabels.push(`${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}`);
+          clueTimeData.push(clueTimes.map(c => c.filter(t => t <= time + timeStep).length));
         }
         clueData = clueTimeData[0].map((_, colIndex) =>
             clueTimeData.map(row => row[colIndex])
@@ -74,8 +80,8 @@ const updateData = async () => {
         }
         document.getElementById(`player-${i}-name`).innerHTML = playerNames[i];
         if (!playerClues[i][0]) {
-          document.getElementById(`player-${i}-clue1`).innerHTML = `username: ${playerClueValues[i][0]}`;
-          document.getElementById(`player-${i}-clue2`).innerHTML = `password: ${playerClueValues[i][1]}`;
+          document.getElementById(`player-${i}-clue1`).innerHTML = `Hacking the Mainframe Document<br>username: ${playerClueValues[i][0]}`;
+          document.getElementById(`player-${i}-clue2`).innerHTML = `Hacking the Mainframe Document<br>password: ${playerClueValues[i][1]}`;
           document.getElementById(`player-${i}-step`).innerHTML = "Hacked Landing Page";
         } else if (!playerClues[i][1] && !playerClues[i][2]) {
           document.getElementById(`player-${i}-clue1`).innerHTML = `${playerClueValues[i][8]}<br>Player: ${playerClueValues[i][9]}<br>Safe Code: ${playerClueValues[i][3]}`;
@@ -83,26 +89,26 @@ const updateData = async () => {
           document.getElementById(`player-${i}-step`).innerHTML = "French Hacked Landing Page";
         } else if (!playerClues[i][1] && playerClues[i][2] && !playerClues[i][3]) {
           document.getElementById(`player-${i}-clue1`).innerHTML = `${playerClueValues[i][6]}<br>Player: ${playerClueValues[i][7]}<br>Group Value: ${playerClueValues[i][2]}`;
-          document.getElementById(`player-${i}-clue2`).innerHTML = "French Instructions: Select Cambriolage, Insert 'Professor Getsshot', Take Pro Package";
+          document.getElementById(`player-${i}-clue2`).innerHTML = "French Instructions:<br>Select Cambriolage Image<br>Insert 'Professor Getsshot' into Name<br>Take Pro Package";
           document.getElementById(`player-${i}-step`).innerHTML = "Q-A-None Page";
         } else if (playerClues[i][1] && !playerClues[i][2]) {
           document.getElementById(`player-${i}-clue1`).innerHTML = `${playerClueValues[i][8]}<br>Player: ${playerClueValues[i][9]}<br>Safe Code: ${playerClueValues[i][3]}`;
-          document.getElementById(`player-${i}-clue2`).innerHTML = "French Instructions: Select Cambriolage, Insert 'Professor Getsshot', Take Pro Package";
+          document.getElementById(`player-${i}-clue2`).innerHTML = "French Instructions:<br>Select Cambriolage Image<br>Insert 'Professor Getsshot' into Name<br>Take Pro Package";
           document.getElementById(`player-${i}-step`).innerHTML = "French Hacked Landing Page";
         } else if (!playerClues[i][1] && playerClues[i][2] && playerClues[i][3]) {
           document.getElementById(`player-${i}-clue1`).innerHTML = `${playerClueValues[i][6]}<br>Player: ${playerClueValues[i][7]}<br>Group Value: ${playerClueValues[i][2]}`;
-          document.getElementById(`player-${i}-clue2`).innerHTML = `Promo Code: ${playerClueValues[i][4]}`;
+          document.getElementById(`player-${i}-clue2`).innerHTML = `Q-A-None Page Related Organisations<br>Promo Code: ${playerClueValues[i][4]}`;
           document.getElementById(`player-${i}-step`).innerHTML = "Q-A-None";
         } else if (playerClues[i][1] && playerClues[i][2] && !playerClues[i][3]) {
-          document.getElementById(`player-${i}-clue1`).innerHTML = "French Instructions: Select Cambriolage, Insert 'Professor Getsshot', Take Pro Package";
-          document.getElementById(`player-${i}-clue2`).innerHTML = `Promo Code: ${playerClueValues[i][4]}`;
+          document.getElementById(`player-${i}-clue1`).innerHTML = "French Instructions:<br>Select Cambriolage Image<br>Insert 'Professor Getsshot' into Name<br>Take Pro Package";
+          document.getElementById(`player-${i}-clue2`).innerHTML = `Q-A-None Page Related Organisations<br>Promo Code: ${playerClueValues[i][4]}`;
           document.getElementById(`player-${i}-step`).innerHTML = "Hire A Hitman Page";
         } else if (!playerClues[i][4]) {
-          document.getElementById(`player-${i}-clue1`).innerHTML = `Promo Code: ${playerClueValues[i][4]}`;
-          document.getElementById(`player-${i}-clue2`).innerHTML = `Symbols PIN: ${playerClueValues[i][5]}`;
+          document.getElementById(`player-${i}-clue1`).innerHTML = `Q-A-None Page Related Organisations<br>Promo Code: ${playerClueValues[i][4]}`;
+          document.getElementById(`player-${i}-clue2`).innerHTML = `Symbols on all other pages related each to a letter<br>Powerpoint Presentation<br>Symbols PIN: ${playerClueValues[i][5]}`;
           document.getElementById(`player-${i}-step`).innerHTML = "News Article Page";
         } else if (!playerClues[i][5]) {
-          document.getElementById(`player-${i}-clue1`).innerHTML = `Symbols PIN: ${playerClueValues[i][5]}`;
+          document.getElementById(`player-${i}-clue1`).innerHTML = `Symbols on all other pages related each to a letter<br>Powerpoint Presentation<br>Symbols PIN: ${playerClueValues[i][5]}`;
           document.getElementById(`player-${i}-clue2`).innerHTML = `Flight: From Chicago to Paris<br>United Airlines on 10/24/2026<br>Flight Number: UA987`;
           document.getElementById(`player-${i}-step`).innerHTML = "Flight Website Page";
         }  else if (!playerClues[i][6]) {
@@ -127,7 +133,7 @@ function drawLineChart() {
           {
             scaleLabel: {
               display: true,
-              labelString: "Hits"
+              labelString: "Clues"
             }
           }
         ]
