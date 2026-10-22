@@ -85,10 +85,10 @@ const updateData = async () => {
           document.getElementById(`player-${i}-step`).innerHTML = "Hacked Landing Page";
         } else if (!playerClues[i][1] && !playerClues[i][2]) {
           document.getElementById(`player-${i}-clue1`).innerHTML = `${playerClueValues[i][8]}<br>Player: ${playerClueValues[i][9]}<br>Safe Code: ${playerClueValues[i][3]}`;
-          document.getElementById(`player-${i}-clue2`).innerHTML = `${playerClueValues[i][6]}<br>Player: ${playerClueValues[i][7]}<br>Group Value: ${playerClueValues[i][2]}`;
+          document.getElementById(`player-${i}-clue2`).innerHTML = `Figure out who has your same R Number<br>${playerClueValues[i][6]}<br>Player: ${playerClueValues[i][7]}<br>Group Value: ${playerClueValues[i][2]}`;
           document.getElementById(`player-${i}-step`).innerHTML = "French Hacked Landing Page";
         } else if (!playerClues[i][1] && playerClues[i][2] && !playerClues[i][3]) {
-          document.getElementById(`player-${i}-clue1`).innerHTML = `${playerClueValues[i][6]}<br>Player: ${playerClueValues[i][7]}<br>Group Value: ${playerClueValues[i][2]}`;
+          document.getElementById(`player-${i}-clue1`).innerHTML = `Figure out who has your same R Number<br>${playerClueValues[i][6]}<br>Player: ${playerClueValues[i][7]}<br>Group Value: ${playerClueValues[i][2]}`;
           document.getElementById(`player-${i}-clue2`).innerHTML = "French Instructions:<br>Select Cambriolage Image<br>Insert 'Professor Getsshot' into Name<br>Take Pro Package";
           document.getElementById(`player-${i}-step`).innerHTML = "Q-A-None Page";
         } else if (playerClues[i][1] && !playerClues[i][2]) {
@@ -96,7 +96,7 @@ const updateData = async () => {
           document.getElementById(`player-${i}-clue2`).innerHTML = "French Instructions:<br>Select Cambriolage Image<br>Insert 'Professor Getsshot' into Name<br>Take Pro Package";
           document.getElementById(`player-${i}-step`).innerHTML = "French Hacked Landing Page";
         } else if (!playerClues[i][1] && playerClues[i][2] && playerClues[i][3]) {
-          document.getElementById(`player-${i}-clue1`).innerHTML = `${playerClueValues[i][6]}<br>Player: ${playerClueValues[i][7]}<br>Group Value: ${playerClueValues[i][2]}`;
+          document.getElementById(`player-${i}-clue1`).innerHTML = `Figure out who has your same R Number<br>${playerClueValues[i][6]}<br>Player: ${playerClueValues[i][7]}<br>Group Value: ${playerClueValues[i][2]}`;
           document.getElementById(`player-${i}-clue2`).innerHTML = `Q-A-None Page Related Organisations<br>Promo Code: ${playerClueValues[i][4]}`;
           document.getElementById(`player-${i}-step`).innerHTML = "Q-A-None";
         } else if (playerClues[i][1] && playerClues[i][2] && !playerClues[i][3]) {
