@@ -103,7 +103,7 @@ const hhpSubmit = () => {
     if (promoCode.value.trim() == "") {
         alert(hireName + " is not accepting new clients at this time. Please try again later.");
         cancelHire();
-    } else if (hireName == "SNIPEY-JOHN") {
+    } else if (hireName == "SNIPEY-JOSE") {
       fetch(`${apiUrl}/clues?id=eq.${playerId}&kmp_promo=eq.${promoCode.value.toUpperCase()}&apikey=${apiKey}`).then(response => response.json().then(data => {
         if (data.length > 0) {
           if (data[0].kmp == null ) {
@@ -121,6 +121,13 @@ const hhpSubmit = () => {
         }
       }));
     } else {
+      if ((hireName == "POISON-JOHN") && (promoCode.value.toUpperCase() == "HITS50")) {
+        fetch(`${apiUrl}/clues?id=eq.${playerId}&hit_mislead=is.null`, { method: 'PATCH', headers: {
+          'Content-Type': 'application/json',
+          'apikey': apiKey,
+          'Prefer': 'return=representation'
+        }, body: JSON.stringify({ hit_mislead: getTime() }) });
+      }
       alert("Invalid promo code for " + hireName + ". Please try again.");
       promoCode.value = "";
     }
@@ -229,7 +236,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       } else if (page == "hhp.html") {
         if (!symbolValue.includes("O")) {
-          document.getElementById("o-button").setAttribute("onclick", "hireButtonClick('CHoKE-OUT-RAY')");
+          document.getElementById("o-button").setAttribute("onclick", "hireButtonClick('CHoKE-OUT-CRIS')");
         }
         if (!symbolValue.includes("E")) {
           document.getElementById("e-trigger").setAttribute("onclick", `document.getElementById('e-image').removeAttribute('hidden'); document.getElementById("e-color").setAttribute("style", "color:#D8C9B8");`);

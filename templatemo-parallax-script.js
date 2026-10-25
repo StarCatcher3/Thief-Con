@@ -198,7 +198,7 @@ function hireButtonClick(name) {
     hireName = name
     hireTitle.innerHTML = "<h2>HIRE " + name + " AS YOUR HITMAN</h2>";
     promoCode.value = "";
-    if (name == "CHoKE-OUT-RAY") {
+    if (name == "CHoKE-OUT-CRIS") {
         document.getElementById("o-image").removeAttribute("hidden");
     }
     hirePopup.classList.toggle('open');

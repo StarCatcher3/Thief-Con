@@ -320,21 +320,22 @@
                     <select id="origin" required>
                         <option value="" disabled selected>Select a city</option>
                         <option>Atlanta</option>
-                        <option>Dubai</option>
-                        <option>Dallas</option>
-                        <option>Tokyo</option>
-                        <option>London</option>
-                        <option>Denver</option>
-                        <option>Istanbul</option>
-                        <option>Chicago</option>
-                        <option>New Delhi</option>
-                        <option>Shanghai</option>
-                        <option>Los Angeles</option>
-                        <option>Guangzhou</option>
-                        <option>Seoul</option>
-                        <option>Paris</option>
-                        <option>Singapore</option>
                         <option>Beijing</option>
+                        <option>Chicago</option>
+                        <option>Dallas</option>
+                        <option>Denver</option>
+                        <option>Dubai</option>
+                        <option>Guangzhou</option>
+                        <option>Istanbul</option>
+                        <option>London</option>
+                        <option>Los Angeles</option>
+                        <option>New Delhi</option>
+                        <option>Paris</option>
+                        <option>São Paulo</option>
+                        <option>Seoul</option>
+                        <option>Shanghai</option>
+                        <option>Singapore</option>
+                        <option>Tokyo</option>
                     </select>
                     <span class="select-arrow"></span>
                 </div>
@@ -344,21 +345,22 @@
                     <select id="destination" required>
                         <option value="" disabled selected>Select a city</option>
                         <option>Atlanta</option>
-                        <option>Dubai</option>
-                        <option>Dallas</option>
-                        <option>Tokyo</option>
-                        <option>London</option>
-                        <option>Denver</option>
-                        <option>Istanbul</option>
-                        <option>Chicago</option>
-                        <option>New Delhi</option>
-                        <option>Shanghai</option>
-                        <option>Los Angeles</option>
-                        <option>Guangzhou</option>
-                        <option>Seoul</option>
-                        <option>Paris</option>
-                        <option>Singapore</option>
                         <option>Beijing</option>
+                        <option>Chicago</option>
+                        <option>Dallas</option>
+                        <option>Denver</option>
+                        <option>Dubai</option>
+                        <option>Guangzhou</option>
+                        <option>Istanbul</option>
+                        <option>London</option>
+                        <option>Los Angeles</option>
+                        <option>New Delhi</option>
+                        <option>Paris</option>
+                        <option>São Paulo</option>
+                        <option>Seoul</option>
+                        <option>Shanghai</option>
+                        <option>Singapore</option>
+                        <option>Tokyo</option>
                     </select>
                     <span class="select-arrow"></span>
                 </div>
@@ -366,7 +368,7 @@
                 <div class="field">
                     <label for="departure">DEPARTURE</label>
                     <input id="departure" type="date"
-                           value="2026-10-28" required>
+                           value="2026-11-02" required>
                 </div>
 
                 <div class="field">
@@ -422,21 +424,22 @@
     const message = document.getElementById("message");
     const airports = {
         "Atlanta":    { code: "ATL", lat: 33.6407, lon: -84.4277 },
-        "Dubai":      { code: "DXB", lat: 25.2532, lon:  55.3657 },
-        "Dallas":     { code: "DFW", lat: 32.8998, lon: -97.0403 },
-        "Tokyo":      { code: "HND", lat: 35.5494, lon: 139.7798 },
-        "London":     { code: "LHR", lat: 51.4700, lon:  -0.4543 },
-        "Denver":     { code: "DEN", lat: 39.8561, lon: -104.6737 },
-        "Istanbul":   { code: "IST", lat: 41.2753, lon:  28.7519 },
+        "Beijing":    { code: "PEK", lat: 40.0799, lon: 116.6031 },
         "Chicago":    { code: "ORD", lat: 41.9742, lon: -87.9073 },
-        "New Delhi":  { code: "DEL", lat: 28.5562, lon:  77.1000 },
-        "Shanghai":   { code: "PVG", lat: 31.1443, lon: 121.8083 },
-        "Los Angeles":{ code: "LAX", lat: 33.9416, lon: -118.4085 },
+        "Dallas":     { code: "DFW", lat: 32.8998, lon: -97.0403 },
+        "Denver":     { code: "DEN", lat: 39.8561, lon: -104.6737 },
+        "Dubai":      { code: "DXB", lat: 25.2532, lon:  55.3657 },
         "Guangzhou":  { code: "CAN", lat: 23.3924, lon: 113.2988 },
-        "Seoul":      { code: "ICN", lat: 37.4602, lon: 126.4407 },
+        "Istanbul":   { code: "IST", lat: 41.2753, lon:  28.7519 },
+        "London":     { code: "LHR", lat: 51.4700, lon:  -0.4543 },
+        "Los Angeles":{ code: "LAX", lat: 33.9416, lon: -118.4085 },
+        "New Delhi":  { code: "DEL", lat: 28.5562, lon:  77.1000 },
         "Paris":      { code: "CDG", lat: 49.0097, lon:   2.5479 },
+        "São Paulo":  { code: "GRU", lat: -23.4258, lon: -46.4683 },
+        "Seoul":      { code: "ICN", lat: 37.4602, lon: 126.4407 },
+        "Shanghai":   { code: "PVG", lat: 31.1443, lon: 121.8083 },
         "Singapore":  { code: "SIN", lat:  1.3644, lon: 103.9915 },
-        "Beijing":    { code: "PEK", lat: 40.0799, lon: 116.6031 }
+        "Tokyo":      { code: "HND", lat: 35.5494, lon: 139.7798 }
     };
     const airlines = {
         "American Airlines": { code: "AA", digits: 3 },
@@ -449,126 +452,98 @@
     const predefinedFlights = [
         {
             "airline": "United Airlines",
-            "flightNumber": "UA267",
-            "originAirport": "ORD",
-            "originCity": "Chicago",
-            "destinationAirport": "CDG",
-            "destinationCity": "Paris",
-            "price": 600,
-            "duration": 545,
-            "time": "00:45"
-        },
-        {
+            "destinationAirport": "GRU",
+            "destinationCity": "São Paulo",
+            "duration": 730,
+            "flightNumber": "UA903",
+            "originAirport": "CDG",
+            "originCity": "Paris",
+            "price": 902,
+            "time": "01:59"
+        }, {
             "airline": "United Airlines",
-            "flightNumber": "UA718",
-            "originAirport": "ORD",
-            "originCity": "Chicago",
-            "destinationAirport": "CDG",
-            "destinationCity": "Paris",
-            "price": 1036,
-            "duration": 494,
-            "time": "02:49"
-        },
-        {
+            "destinationAirport": "GRU",
+            "destinationCity": "São Paulo",
+            "duration": 769,
+            "flightNumber": "UA961",
+            "originAirport": "CDG",
+            "originCity": "Paris",
+            "price": 1299,
+            "time": "04:03"
+        }, {
             "airline": "United Airlines",
-            "flightNumber": "UA473",
-            "originAirport": "ORD",
-            "originCity": "Chicago",
-            "destinationAirport": "CDG",
-            "destinationCity": "Paris",
-            "price": 579,
-            "duration": 514,
-            "time": "04:11"
-        },
-        {
+            "destinationAirport": "GRU",
+            "destinationCity": "São Paulo",
+            "duration": 706,
+            "flightNumber": "UA279",
+            "originAirport": "CDG",
+            "originCity": "Paris",
+            "price": 1247,
+            "time": "07:56"
+        }, {
             "airline": "United Airlines",
-            "flightNumber": "UA583",
-            "originAirport": "ORD",
-            "originCity": "Chicago",
-            "destinationAirport": "CDG",
-            "destinationCity": "Paris",
-            "price": 1021,
-            "duration": 494,
-            "time": "06:50"
-        },
-        {
+            "destinationAirport": "GRU",
+            "destinationCity": "São Paulo",
+            "duration": 737,
+            "flightNumber": "UA458",
+            "originAirport": "CDG",
+            "originCity": "Paris",
+            "price": 779,
+            "time": "10:05"
+        }, {
             "airline": "United Airlines",
-            "flightNumber": "UA662",
-            "originAirport": "ORD",
-            "originCity": "Chicago",
-            "destinationAirport": "CDG",
-            "destinationCity": "Paris",
-            "price": 863,
-            "duration": 541,
-            "time": "08:17"
-        },
-        {
+            "destinationAirport": "GRU",
+            "destinationCity": "São Paulo",
+            "duration": 727,
+            "flightNumber": "UA926",
+            "originAirport": "CDG",
+            "originCity": "Paris",
+            "price": 1346,
+            "time": "13:20"
+        }, {
             "airline": "United Airlines",
-            "flightNumber": "UA542",
-            "originAirport": "ORD",
-            "originCity": "Chicago",
-            "destinationAirport": "CDG",
-            "destinationCity": "Paris",
-            "price": 734,
-            "duration": 552,
-            "time": "10:33"
-        },
-        {
+            "destinationAirport": "GRU",
+            "destinationCity": "São Paulo",
+            "duration": 699,
+            "flightNumber": "UA094",
+            "originAirport": "CDG",
+            "originCity": "Paris",
+            "price": 1111,
+            "time": "16:18"
+        }, {
             "airline": "United Airlines",
-            "flightNumber": "UA619",
-            "originAirport": "ORD",
-            "originCity": "Chicago",
-            "destinationAirport": "CDG",
-            "destinationCity": "Paris",
-            "price": 857,
-            "duration": 500,
-            "time": "12:20"
-        },
-        {
+            "destinationAirport": "GRU",
+            "destinationCity": "São Paulo",
+            "duration": 743,
+            "flightNumber": "UA186",
+            "originAirport": "CDG",
+            "originCity": "Paris",
+            "price": 1356,
+            "time": "19:23"
+        }, {
             "airline": "United Airlines",
-            "flightNumber": "UA227",
-            "originAirport": "ORD",
-            "originCity": "Chicago",
-            "destinationAirport": "CDG",
-            "destinationCity": "Paris",
-            "price": 793,
-            "duration": 512,
-            "time": "13:45"
-        },
-        {
-            "airline": "United Airlines",
-            "flightNumber": "UA622",
-            "originAirport": "ORD",
-            "originCity": "Chicago",
-            "destinationAirport": "CDG",
-            "destinationCity": "Paris",
-            "price": 778,
-            "duration": 534,
-            "time": "16:00"
-        },
-        {
-            "airline": "United Airlines",
-            "flightNumber": "UA987",
-            "originAirport": "ORD",
-            "originCity": "Chicago",
-            "destinationAirport": "CDG",
-            "destinationCity": "Paris",
-            "price": 617,
-            "duration": 490,
-            "time": "19:45",
+            "destinationAirport": "GRU",
+            "destinationCity": "São Paulo",
+            "duration": 751,
+            "flightNumber": "UA291",
+            "originAirport": "CDG",
+            "originCity": "Paris",
+            "price": 1449,
+            "time": "22:30",
             "correctFlight": true
-        },
-        {
+        }, {
             "airline": "United Airlines",
-            "flightNumber": "UA517",
-            "originAirport": "ORD",
-            "originCity": "Chicago",
-            "destinationAirport": "CDG",
-            "destinationCity": "Paris",
-            "price": 532,
-            "duration": 504,
-            "time": "22:39"
+            "destinationAirport": "GRU",
+            "destinationCity": "São Paulo",
+            "duration": 728,
+            "flightNumber": "UA367",
+            "originAirport": "CDG",
+            "originCity": "Paris",
+            "price": 1184,
+            "time": "23:56"
         }];
+
+        
 
     function getAirport(city) {
         return airports[city];
@@ -628,7 +603,6 @@
     const getFlightNumber = (airline) => {
         airlineValues = airlines[airline];
         flightNumber = airlineValues.code;
-        console.log("Generating Flight Number");
         for (k = 0; k < airlineValues.digits; k++) {
             flightNumber += Math.floor(Math.random() * 10).toString();
         }
@@ -640,8 +614,7 @@
         destination = document.getElementById("destination").value;
         airline = document.getElementById("airline").value;
         departure = document.getElementById("departure").value;
-        console.log(departure);
-        if (origin == "Chicago" && destination == "Paris" && airline == "United Airlines" && departure == "2026-10-24") {
+        if (origin == "Paris" && destination == "São Paulo" && airline == "United Airlines" && departure == "2026-10-30") {
             return predefinedFlights;
         }
         madeUpFlights = []
@@ -661,7 +634,6 @@
                     time: getTimeFromDuration(Math.round((i + 0.5) * timestep + (Math.random() - 0.5) * 60))
                 })
         }
-        console.log(madeUpFlights);
         return madeUpFlights;
     }
 

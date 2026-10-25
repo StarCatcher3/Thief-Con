@@ -19,40 +19,40 @@ html,body,h1,h2,h3,h4 {font-family: "Lucida Console", monospace}
 
 <script src="app.js"></script>
 
-<!-- Content -->
+<!-- Conteúdo -->
 <div class="w3-content" style="max-width:1100px;margin-bottom:80px">
 
   <div class="w3-panel w3-left">
     <h1 class="glitch" data-text="Thief Con"><b>Thief Con</b></h1>
-    <p>La Convention de Voleurs <span style="color:red">#1</span> du monde entier !</p>
+    <p>A convenção de ladrões número <span style="color:red">#1</span> do mundo inteiro!</p>
   </div>
 
-  <!-- Slideshow -->
+  <!-- Apresentação de slides -->
   <div class="w3-container">
     <div class="w3-display-container mySlides">
-      <img src="/Thief-Con/public/Thief.jpg" alt="Voleur" style="width:100%">
+      <img src="/Thief-Con/public/Thief.jpg" alt="Ladrão" style="width:100%">
       <div class="w3-display-topleft w3-container w3-padding-32">
-        <span class="w3-padding-large w3-animate-bottom" style="color:var(--green); background-color:black">Vol</span>
+        <span class="w3-padding-large w3-animate-bottom" style="color:var(--green); background-color:black">Furto</span>
       </div>
     </div>
     <div class="w3-display-container mySlides">
-      <img class="inverted" src="/Thief-Con/public/Robber.jpg" alt="Cambriolage" style="width:100%">
+      <img class="inverted" src="/Thief-Con/public/Robber.jpg" alt="Assalto" style="width:100%">
       <div class="w3-display-topmiddle w3-container w3-padding-32">
-        <span class="w3-padding-large w3-animate-bottom" style="color:var(--green); background-color:black">Cambriolage</span>
+        <span class="w3-padding-large w3-animate-bottom" style="color:var(--green); background-color:black">Arrombamento</span>
       </div>
     </div>
     <div class="w3-display-container mySlides">
-      <img src="/Thief-Con/public/Hacker.jpg" alt="Braquages" style="width:100%">
+      <img src="/Thief-Con/public/Hacker.jpg" alt="Roubos" style="width:100%">
       <div class="w3-display-topright w3-container w3-padding-32">
-        <span class="w3-padding-large w3-animate-bottom" style="color:var(--green); background-color:black">Braquages</span>
+        <span class="w3-padding-large w3-animate-bottom" style="color:var(--green); background-color:black">Assaltos</span>
       </div>
     </div>
 
-    <!-- Slideshow next/previous buttons -->
+    <!-- Botões de navegação dos slides -->
     <div class="w3-container w3-padding w3-xlarge" style="color:var(--green); background-color:#111111">
       <div class="w3-left" onclick="plusDivs(-1)"><i class="fa fa-arrow-circle-left w3-hover-text-teal"></i></div>
       <div class="w3-right" onclick="plusDivs(1)"><i class="fa fa-arrow-circle-right w3-hover-text-teal"></i></div>
-    
+
       <div>
         <span class="w3-tag demodots w3-border w3-transparent w3-hover-green" onclick="currentDiv(1)"></span>
         <span class="w3-tag demodots w3-border w3-transparent w3-hover-green" onclick="currentDiv(2)"></span>
@@ -60,58 +60,57 @@ html,body,h1,h2,h3,h4 {font-family: "Lucida Console", monospace}
       </div>
     </div>
   </div>
-  
 
   <div class="w3-container">
     <div class="w3-center w3-padding-64" style="rotate: 10deg;">
-      <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">De quoi c'est basé ?</span>
+      <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Qual é a proposta?</span>
     </div>
     <div class="w3-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
     <div class="w3-container w3-padding-16" style="color:#338811; background-color:#080820">
-      <h3 class="glitch" data-text="Rencontrer">Rencontrer</h3>
-      <p>C'est bien important de choisir cambriolage pour pouvoir avancer. Faites-le. Faire connaissance avec d'autres professionels dans le domaine. Les meilleurs voleurs assisteront, vous ne voulez pas vous manquer cette opportunité de vous mettre en contact avec eux.</p>
+      <h3 class="glitch" data-text="Conhecer">Conhecer</h3>
+      <p>É muito importante escolher o arrombamento para conseguir avançar. Faça isso. Conheça outros profissionais da área. Os melhores ladrões estarão presentes, e você não vai querer perder essa oportunidade de entrar em contato com eles.</p>
     </div>
 
     <div class="w3-container w3-padding-16" style="padding-left: 65px; padding-right: 0px; color:var(--green); background-color:#180808">
-      <h3 class="glitch" data-text="Se Mélanger" style="--duration: 10s; --durationa: 2s; --durationb: 3.8s;">Se Mélanger</h3>
-      <img id="n-image" hidden style="position: absolute; left: 5%; transform: translate(0, 4em); width: auto; height: 30px;" src="public/symbol (N).jpg"><p>Faire grandir votre réseau et trouver de <span id="n-glitch" data-text="N">n</span>ouveaux collaborateurs pour vos futurs projets. Il y aura un temps dédié pour vous connecter avec les spécialistes que vous admirez le plus.</p>
+      <h3 class="glitch" data-text="Socializar" style="--duration: 10s; --durationa: 2s; --durationb: 3.8s;">Socializar</h3>
+      <img id="n-image" hidden style="position: absolute; left: 5%; transform: translate(0, 4em); width: auto; height: 30px;" src="public/symbol (N).jpg"><p>Amplie sua rede de contatos e encontre <span id="n-glitch" data-text="N">n</span>ovos colaboradores para seus projetos futuros. Haverá um período dedicado a se conectar com os especialistas que você mais admira.</p>
     </div>
 
     <div class="w3-container" style="color:var(--green); background-color:#081808">
-      <h3 class="glitch" data-text="Apprendre" style="--duration: 9.2s; --durationa: 2.4s; --durationb: 2.9s;">Apprendre</h3>
-      <p>Assistez à notre présentation clé pour obtenir les dernières mises à jour qui impactent votre travail quotidien. Telemachus Finch, notre orateur principal, a plus d'années d'expérience que vous ne pouvez l'imaginer.</p>
+      <h3 class="glitch" data-text="Aprender" style="--duration: 9.2s; --durationa: 2.4s; --durationb: 2.9s;">Aprender</h3>
+      <p>Participe da nossa palestra principal para ficar por dentro das últimas novidades que afetam seu trabalho no dia a dia. Telemachus Finch, nosso palestrante principal, tem mais anos de experiência do que você pode imaginar.</p>
     </div>
 
     <div class="w3-container w3-padding-16" style="rotate: -20deg; color:var(--green); background-color:#111111">
-      <h3 class="glitch" data-text="Voler" style="--duration: 10.7s; --durationa: 3.2s; --durationb: 1.8s;">Voler</h3>
-      <p>Mettez à l'épreuve vos compétences avec les dernières techniques pour faire avancer votre carrière et obtenir l'expérience nécessaire pour rester à jour dans l'industrie.</p>
+      <h3 class="glitch" data-text="Roubar" style="--duration: 10.7s; --durationa: 3.2s; --durationb: 1.8s;">Roubar</h3>
+      <p>Ponha suas habilidades à prova com as técnicas mais recentes para impulsionar sua carreira e adquirir a experiência necessária para se manter atualizado no setor.</p>
     </div>
     </div>
   </div>
 
-  <!-- Pricing Plans -->
+  <!-- Planos de preços -->
   <div class="w3-container" id="plans">
     <div class="w3-center w3-padding-64">
-      <p class="glitch" data-text="comptez" style="color: #1af0dc; text-align: right; padding-right: 30px;">comptez</p>
+      <p class="glitch" data-text="considere" style="color: #1af0dc; text-align: right; padding-right: 30px;">vai</p>
       <div style="display: flex">
-        <h3>Vous</h3>
-        <h2>Assister ?</h2>
+        <h3>Você</h3>
+        <h2>participar?</h2>
       </div>
-      <p style="rotate: 3deg;">Choisissez une entrée qui correspond à vos besoins.</p>
+      <p style="rotate: 3deg;">Escolha um ingresso que atenda às suas necessidades.</p>
     </div>
 
     <div class="w3-grid" style="position: relative; height: 1500px; grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px; border: 3px solid green;">
     <div style="position: absolute; width: 100%;">
       <ul class="w3-ul w3-center w3-hover-shadow">
-        <li class="w3-xlarge w3-padding-32" style="background-color: #111111">Basique</li>
-        <li class="w3-padding-16">Place <b>Economique</b></li>
-        <li class="w3-padding-16"><b>1</b> Artifact Gratuit</li>
+        <li class="w3-xlarge w3-padding-32" style="background-color: #111111">Básico</li>
+        <li class="w3-padding-16">Ingresso <b>Econômico</b></li>
+        <li class="w3-padding-16"><b>1</b> artefato gratuito</li>
         <li class="w3-padding-16">
-          <h2 class="w3-wide">2,000 €</h2>
-          <span class="w3-opacity">par personne</span>
+          <h2 class="w3-wide">2.000 R$</h2>
+          <span class="w3-opacity">por pessoa</span>
         </li>
         <li class="w3-black w3-padding-24">
-          <button onclick="alert('Complet')" class="w3-button w3-padding-large" style="background-color: var(--green); color: #080820;">S'inscrire</button>
+          <button onclick="alert('Esgotado')" class="w3-button w3-padding-large" style="background-color: var(--green); color: #080820;">Inscrever-se</button>
         </li>
       </ul>
     </div>
@@ -119,15 +118,15 @@ html,body,h1,h2,h3,h4 {font-family: "Lucida Console", monospace}
     <div style="position: absolute; left: 50px; top: 300px;">
       <ul class="w3-ul w3-center w3-hover-shadow" style="rotate: 5deg;">
         <li class="w3-xlarge w3-padding-32">Pro</li>
-        <li class="w3-padding-16">Place <b>Affaires</b></li>
-        <li class="w3-padding-16"><b>5</b> Artifacts Gratuits</li>
-        <li class="w3-padding-16">Suivez les consignes et prenez cette place pour avancer</li>
+        <li class="w3-padding-16">Ingresso <b>Executivo</b></li>
+        <li class="w3-padding-16"><b>5</b> artefatos gratuitos</li>
+        <li class="w3-padding-16">Siga as instruções e escolha este ingresso para progredir</li>
         <li class="w3-padding-16">
-          <h2 class="w3-wide">8,000 €</h2>
-          <span class="w3-opacity">par personne</span>
+          <h2 class="w3-wide">8.000 R$</h2>
+          <span class="w3-opacity">por pessoa</span>
         </li>
         <li class="w3-black">
-          <button onclick="tacpSubmit()" class="w3-button w3-padding-large" style="background-color: #DD2222; color: black;">S'inscrire</button>
+          <button onclick="tacpSubmit()" class="w3-button w3-padding-large" style="background-color: #DD2222; color: black;">Inscrever-se</button>
         </li>
       </ul>
     </div>
@@ -135,26 +134,26 @@ html,body,h1,h2,h3,h4 {font-family: "Lucida Console", monospace}
     <div style="position: absolute; top: 900px;">
       <ul class="w3-ul w3-center w3-hover-shadow">
         <li class="w3-black w3-xlarge w3-padding-32">Premium</li>
-        <li class="w3-padding-16">Place <b class="glitch" data-text="VIP">VIP</b></li>
-        <li class="w3-padding-16"><b>10</b> Artifacts Gratuits</li>
-        <li class="w3-padding-16">Conversation avec le locuteur</li>
-        <li class="w3-padding-16">Accès aux arrière-scènes</li>
+        <li class="w3-padding-16">Ingresso <b class="glitch" data-text="VIP">VIP</b></li>
+        <li class="w3-padding-16"><b>10</b> artefatos gratuitos</li>
+        <li class="w3-padding-16">Conversa com o palestrante</li>
+        <li class="w3-padding-16">Acesso aos bastidores</li>
         <li class="w3-padding-16">
-          <h2 class="w3-wide">26,000 €</h2>
-          <span class="w3-opacity">par personne</span>
+          <h2 class="w3-wide">26.000 R$</h2>
+          <span class="w3-opacity">por pessoa</span>
         </li>
         <li class="w3-black w3-padding-24">
-          <button onclick="alert('Complet')" class="w3-button w3-padding-large" style="background-color: #DD2222; color: #227722;">S'inscrire</button>
+          <button onclick="alert('Esgotado')" class="w3-button w3-padding-large" style="background-color: #DD2222; color: #227722;">Inscrever-se</button>
         </li>
       </ul>
     </div>
     </div>
   </div>
 
-  <!-- Who We Are -->
+  <!-- Quem somos -->
   <div class="w3-container" id="about">
     <div class="w3-center w3-padding-64">
-      <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Qui sommes-nous ?</span>
+      <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Quem somos?</span>
     </div>
 
     <div class="w3-grid" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px">
@@ -163,8 +162,8 @@ html,body,h1,h2,h3,h4 {font-family: "Lucida Console", monospace}
         <img src="/Thief-Con/public/Professor Gotshot.PNG" alt="Professor" style="width:100%">
         <div class="w3-container">
           <h3>Professor Getsshot</h3>
-          <p class="w3-opacity">Aujourd'hui c'est vous. Insérez votre nom dans le formulaire.</p>
-          <p>"La volition d'être United entre toutes les techniques de cambriolage est un aspect clé pour un bon voleur."</p>
+          <p class="w3-opacity">Hoje, esse alguém é você. Insira seu nome no formulário.</p>
+          <p>"A vontade de ser United entre todas as técnicas de arrombamento é um aspecto fundamental para ser um bom ladrão."</p>
         </div>
       </div>
     </div>
@@ -174,34 +173,34 @@ html,body,h1,h2,h3,h4 {font-family: "Lucida Console", monospace}
         <img class="inverted" src="/Thief-Con/public/Telemachus Finch.jpg" alt="Telemachus" style="width:100%">
         <div class="w3-container">
           <h3>Telemachus Finch</h3>
-          <p class="w3-opacity">Invraisemblablement Vieil Homme</p>
-          <p>Un homme incroyablement vieux avec trop d'expérience dans le domaine. Le meilleur locuteur qui a déjà vécu sur terre.</p>
+          <p class="w3-opacity">Um senhor incrivelmente velho</p>
+          <p>Um homem incrivelmente velho, com experiência demais na área. O melhor palestrante que já existiu na Terra.</p>
         </div>
       </div>
     </div>
 
     <div>
       <div class="w3-card-4">
-        <img class="greenimage" src="/Thief-Con/public/The Fence.jpeg" alt="Fence" style="width:100%">
+        <img class="greenimage" src="/Thief-Con/public/The Fence.jpeg" alt="Receptador" style="width:100%">
         <div class="w3-container">
           <img id="f-image" hidden style="position: absolute; left: 70%; transform: translate(0, -1em); width: 20px; height: auto;" src="public/symbol (F).jpg">
-          <h3>Le <span id="f-color">F</span>ence</h3>
-          <p class="w3-opacity">Troisième Parti Impartiel</p>
-          <p>N'aime pas être impliqué dans l'action, mais s'assure que les comptes soient en ordre à la fin de la journée.</p>
+          <h3>O <span id="f-color">F</span>ence</h3>
+          <p class="w3-opacity">Terceiro imparcial</p>
+          <p>Não gosta de se envolver na ação, mas garante que as contas estejam em ordem no final do dia.</p>
         </div>
       </div>
     </div>
     </div>
   </div>
 
-  <!-- Contact -->
+  <!-- Contato -->
   <div class="w3-center w3-padding-64" id="contact">
-    <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Contactez-nous</span>
+    <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Entre em contato</span>
   </div>
 
   <div class="w3-container" action="/action_page.php" target="_blank">
     <div class="w3-section" style="rotate: 20deg; position: relative; z-index: 5;">
-      <p data-text="Votre Nouveau Nom" class="glitch" style="--duration: 10.7s; --durationa: 3.2s; --durationb: 1.8s;">Votre Nouveau Nom</p>
+      <p data-text="Seu Novo Nome" class="glitch" style="--duration: 10.7s; --durationa: 3.2s; --durationb: 1.8s;">Seu novo nome</p>
       <input id="nom-input" class="w3-input w3-border w3-hover-border-black" style="width:100%; background-color: #222222; color: red;" type="text" name="Name">
     </div>
     <br>
@@ -210,10 +209,10 @@ html,body,h1,h2,h3,h4 {font-family: "Lucida Console", monospace}
     <br>
     <br>
     <div class="w3-section" style="rotate: -40deg; position: relative; z-index: 10;">
-      <p data-text="Message" class="glitch">M<span style="color: green">essag</span>e</p>
+      <p data-text="Mensagem" class="glitch">M<span style="color: green">ensage</span>m</p>
       <input class="w3-input w3-border w3-hover-border-black" style="width:100%; background-color: #222222; color: red;" name="Message">
     </div>
-    <button onclick="messageFormSubmit()" type="submit" class="w3-button w3-block" style="background-color: #222222; color: var(--green); rotate: 200deg; position: relative;z-index: 0;">Envoyer</button>
+    <button onclick="messageFormSubmit()" type="submit" class="w3-button w3-block" style="background-color: #222222; color: var(--green); rotate: 200deg; position: relative;z-index: 0;">Enviar</button>
   </div>
   <br>
   <br>
@@ -223,13 +222,13 @@ html,body,h1,h2,h3,h4 {font-family: "Lucida Console", monospace}
 </div>
 
 
-<!-- Links (sit on bottom) -->
+<!-- Links na parte inferior -->
 <div class="w3-bottom">
   <nav class="w3-flex w3-large w3-light-grey" id="nav-bar-bottom">
-    <a href="index.html" class="w3-button" style="flex:1">Home</a>
-    <a href="#plans" class="w3-button" style="flex:1">Plans</a>
-    <a href="#about" class="w3-button" style="flex:1">About</a>
-    <a href="#contact" class="w3-button" style="flex:1">Contact</a>
+    <a href="index.html" class="w3-button" style="flex:1">Início</a>
+    <a href="#plans" class="w3-button" style="flex:1">Planos</a>
+    <a href="#about" class="w3-button" style="flex:1">Sobre</a>
+    <a href="#contact" class="w3-button" style="flex:1">Contato</a>
   </nav>
 </div>
 
@@ -275,16 +274,16 @@ function tacpSubmit() {
   if (slideIndex == 2 && nom == "professor getsshot") {
     tacpProceed();
   } else {
-    alert("Suivez les étapes d'abord");
+    alert("Siga as etapas primeiro");
   }
 }
 
 function messageFormSubmit() {
   const nom = document.getElementById("nom-input").value.toLowerCase();
   if (nom == "professor getsshot") {
-    alert("Il manque quelque chose. Il ne faut pas envoyer le message, mais il faut laisser le nom.");
+    alert("Está faltando alguma coisa. Você não deve enviar a mensagem, mas precisa deixar o nome.");
   } else {
-    alert("₥ɆⱤ₵ł ₱ØɄⱤ VØ₮ⱤɆ ₥Ɇ₴₴₳₲Ɇ");
+    alert("ₒᵦᵣᵢ𝓰ₐ𝒹ₒ ₚₑₗ ₘₑₙₛₐ𝓰ₑₘ");
   }
 }
 
