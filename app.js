@@ -36,7 +36,7 @@ const indexSubmit = () => {
       } else {
         window.location.href = "redirect.html?redirect=hlp.html"
       }
-    } else if (username == "fence" && password == "ray26") {
+    } else if (username == "fence" && password == "cri26") {
       window.location.href = "redirect.html?redirect=admin-dash.html"
     } else {
       document.getElementById("hlp-username").value = "";
@@ -122,14 +122,17 @@ const hhpSubmit = () => {
       }));
     } else {
       if ((hireName == "POISON-JOHN") && (promoCode.value.toUpperCase() == "HITS50")) {
-        fetch(`${apiUrl}/clues?id=eq.${playerId}&hit_mislead=is.null`, { method: 'PATCH', headers: {
-          'Content-Type': 'application/json',
-          'apikey': apiKey,
-          'Prefer': 'return=representation'
-        }, body: JSON.stringify({ hit_mislead: getTime() }) });
+        if (window.localStorage.getItem("misled") != "true") {
+          fetch(`${apiUrl}/clues?id=eq.${playerId}&hit_mislead=is.null`, { method: 'PATCH', headers: {
+            'Content-Type': 'application/json',
+            'apikey': apiKey,
+            'Prefer': 'return=representation'
+          }, body: JSON.stringify({ hit_mislead: getTime() }) }).then(r => r.json().then(d => {window.location.href = "redirect.html?redirect=index.html"; window.localStorage.setItem("misled", "true");}));
+        } else {
+          alert("Invalid promo code for " + hireName + ". Please try again.");
+          promoCode.value = "";
+        }
       }
-      alert("Invalid promo code for " + hireName + ". Please try again.");
-      promoCode.value = "";
     }
 }
 
@@ -173,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
   fetch(`${apiUrl}/clues?id=eq.${playerId}&apikey=${apiKey}`).then(response => response.json().then(data => {
     if (data.length > 0) {
-      let newNavBarText = `<a href="index.html" class="w3-button" style="flex:1; padding: 8px 0px">Home</a>`;
+      let newNavBarText = `<a href="index.html" class="w3-button" style="flex:1; padding: 8px 0px ${window.location.pathname == "index.html" ? "text-decoration: underline;" : ""}">Home</a>`;
       if (data[0].hlp == null) {
         document.getElementById("nav-bar-bottom").innerHTML = `
           <a href="#" class="w3-button" style="flex:1; padding: 8px 0px">Home</a>
@@ -182,24 +185,24 @@ document.addEventListener("DOMContentLoaded", function () {
           <a href="#contact" class="w3-button" style="flex:1; padding: 8px 0px">Contact</a>
         `;
       } else {
-        newNavBarText += `<a href="hlp.html" class="w3-button" style="flex:1; padding: 8px 0px; background-color: black; color: green;">Hacked</a>`;
+        newNavBarText += `<a href="hlp.html" class="w3-button" style="flex:1; padding: 8px 0px; ${window.location.pathname == "hlp.html" ? "text-decoration: underline;" : ""} background-color: black; color: green;">Hacked</a>`;
         if (data[0].kbpp != null) {
-          newNavBarText += `<a href="kbpp.html" class="w3-button" style="flex:1; padding: 8px 0px; background-color: beige; color: gray;">Q-A-None</a>`;
+          newNavBarText += `<a href="kbpp.html" class="w3-button" style="flex:1; padding: 8px 0px; ${window.location.pathname == "kbpp.html" ? "text-decoration: underline;" : ""} background-color: beige; color: gray;">Q-A-None</a>`;
         }
         if (data[0].tacp != null) {
-          newNavBarText += `<a href="tacp.html" class="w3-button" style="flex:1; padding: 8px 0px; background-color: black; color: green;">Hacké</a>`;
+          newNavBarText += `<a href="tacp.html" class="w3-button" style="flex:1; padding: 8px 0px; ${window.location.pathname == "tacp.html" ? "text-decoration: underline;" : ""} background-color: black; color: green;">Hackeado</a>`;
         }
         if (data[0].hhp != null) {
-          newNavBarText += `<a href="hhp.html" class="w3-button" style="flex:1; padding: 8px 0px; background-color: black; color: white;">Hitman</a>`;
+          newNavBarText += `<a href="hhp.html" class="w3-button" style="flex:1; padding: 8px 0px; ${window.location.pathname == "hhp.html" ? "text-decoration: underline;" : ""} background-color: black; color: white;">Hitman</a>`;
         }
         if (data[0].kmp != null) {
-          newNavBarText += `<a href="kmp.html" class="w3-button" style="flex:1; padding: 8px 0px;">News</a>`;
+          newNavBarText += `<a href="kmp.html" class="w3-button" style="flex:1; padding: 8px 0px; ${window.location.pathname == "kmp.html" ? "text-decoration: underline;" : ""}">News</a>`;
         }
         if (data[0].tafp != null) {
-          newNavBarText += `<a href="tafp.html" class="w3-button" style="flex:1; padding: 8px 0px; background-color: #17365d; color: white;">Flights</a>`;
+          newNavBarText += `<a href="tafp.html" class="w3-button" style="flex:1; padding: 8px 0px; ${window.location.pathname == "tafp.html" ? "text-decoration: underline;" : ""} background-color: #17365d; color: white;">Flights</a>`;
         }
         if (data[0].knp != null) {
-          newNavBarText += `<a href="knp.html" class="w3-button" style="flex:1; padding: 8px 0px;">Booked</a>`;
+          newNavBarText += `<a href="knp.html" class="w3-button" style="flex:1; padding: 8px 0px; ${window.location.pathname == "knp.html" ? "text-decoration: underline;" : ""}">Booked</a>`;
         }
       }
       symbolValue = data[0].tafp_pin;

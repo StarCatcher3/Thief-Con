@@ -15,7 +15,7 @@ const resetData = () => {
           'Content-Type': 'application/json',
           'apikey': apiKey,
           'Prefer': 'return=representation'
-        }, body: JSON.stringify({ hlp: null, kbpp: null, tacp: null, hhp: null, kmp: null, tafp: null, knp: null }) }).then(r => r.json().then(d => {
+        }, body: JSON.stringify({ hlp: null, kbpp: null, tacp: null, hhp: null, kmp: null, tafp: null, knp: null, hit_mislead: null }) }).then(r => r.json().then(d => {
           alert("Data Reset!");
           window.reloadPage();
     }));
@@ -86,21 +86,21 @@ const updateData = async () => {
         } else if (!playerClues[i][1] && !playerClues[i][2]) {
           document.getElementById(`player-${i}-clue1`).innerHTML = `${playerClueValues[i][8]}<br>Player: ${playerClueValues[i][9]}<br>Safe Code: ${playerClueValues[i][3]}`;
           document.getElementById(`player-${i}-clue2`).innerHTML = `Figure out who has your same R Number<br>${playerClueValues[i][6]}<br>Player: ${playerClueValues[i][7]}<br>Group Value: ${playerClueValues[i][2]}`;
-          document.getElementById(`player-${i}-step`).innerHTML = "French Hacked Landing Page";
+          document.getElementById(`player-${i}-step`).innerHTML = "Portuguese Hacked Landing Page";
         } else if (!playerClues[i][1] && playerClues[i][2] && !playerClues[i][3]) {
           document.getElementById(`player-${i}-clue1`).innerHTML = `Figure out who has your same R Number<br>${playerClueValues[i][6]}<br>Player: ${playerClueValues[i][7]}<br>Group Value: ${playerClueValues[i][2]}`;
-          document.getElementById(`player-${i}-clue2`).innerHTML = "French Instructions:<br>Select Cambriolage Image<br>Insert 'Professor Getsshot' into Name<br>Take Pro Package";
+          document.getElementById(`player-${i}-clue2`).innerHTML = "Portuguese Instructions:<br>Select Arrombamento Image<br>Insert 'Professor Getsshot' into Name<br>Take Pro Package";
           document.getElementById(`player-${i}-step`).innerHTML = "Q-A-None Page";
         } else if (playerClues[i][1] && !playerClues[i][2]) {
           document.getElementById(`player-${i}-clue1`).innerHTML = `${playerClueValues[i][8]}<br>Player: ${playerClueValues[i][9]}<br>Safe Code: ${playerClueValues[i][3]}`;
-          document.getElementById(`player-${i}-clue2`).innerHTML = "French Instructions:<br>Select Cambriolage Image<br>Insert 'Professor Getsshot' into Name<br>Take Pro Package";
-          document.getElementById(`player-${i}-step`).innerHTML = "French Hacked Landing Page";
+          document.getElementById(`player-${i}-clue2`).innerHTML = "Portuguese Instructions:<br>Select Arrombamento Image<br>Insert 'Professor Getsshot' into Name<br>Take Pro Package";
+          document.getElementById(`player-${i}-step`).innerHTML = "Portuguese Hacked Landing Page";
         } else if (!playerClues[i][1] && playerClues[i][2] && playerClues[i][3]) {
           document.getElementById(`player-${i}-clue1`).innerHTML = `Figure out who has your same R Number<br>${playerClueValues[i][6]}<br>Player: ${playerClueValues[i][7]}<br>Group Value: ${playerClueValues[i][2]}`;
           document.getElementById(`player-${i}-clue2`).innerHTML = `Q-A-None Page Related Organisations<br>Promo Code: ${playerClueValues[i][4]}`;
           document.getElementById(`player-${i}-step`).innerHTML = "Q-A-None";
         } else if (playerClues[i][1] && playerClues[i][2] && !playerClues[i][3]) {
-          document.getElementById(`player-${i}-clue1`).innerHTML = "French Instructions:<br>Select Cambriolage Image<br>Insert 'Professor Getsshot' into Name<br>Take Pro Package";
+          document.getElementById(`player-${i}-clue1`).innerHTML = "Portuguese Instructions:<br>Select Arrombamento Image<br>Insert 'Professor Getsshot' into Name<br>Take Pro Package";
           document.getElementById(`player-${i}-clue2`).innerHTML = `Q-A-None Page Related Organisations<br>Promo Code: ${playerClueValues[i][4]}`;
           document.getElementById(`player-${i}-step`).innerHTML = "Hire A Hitman Page";
         } else if (!playerClues[i][4]) {
@@ -109,10 +109,10 @@ const updateData = async () => {
           document.getElementById(`player-${i}-step`).innerHTML = "News Article Page";
         } else if (!playerClues[i][5]) {
           document.getElementById(`player-${i}-clue1`).innerHTML = `Symbols on all other pages related each to a letter<br>Powerpoint Presentation<br>Symbols PIN: ${playerClueValues[i][5]}`;
-          document.getElementById(`player-${i}-clue2`).innerHTML = `Flight: From Chicago to Paris<br>United Airlines on 10/24/2026<br>Flight Number: UA987`;
+          document.getElementById(`player-${i}-clue2`).innerHTML = `Flight: From Paris to São Paulo<br>United Airlines on 10/30/2026<br>Flight Number: UA291`;
           document.getElementById(`player-${i}-step`).innerHTML = "Flight Website Page";
         }  else if (!playerClues[i][6]) {
-          document.getElementById(`player-${i}-clue1`).innerHTML = `Flight: From Chicago to Paris<br>United Airlines on 10/24/2026<br>Flight Number: UA987`;
+          document.getElementById(`player-${i}-clue1`).innerHTML = `Flight: From Paris to São Paulo<br>United Airlines on 10/30/2026<br>Flight Number: UA291`;
           document.getElementById(`player-${i}-clue2`).innerHTML = "No More Clues";
           document.getElementById(`player-${i}-step`).innerHTML = "United Tickets Receipt Page";
         } else {k =
