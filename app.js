@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
   fetch(`${apiUrl}/clues?id=eq.${playerId}&apikey=${apiKey}`).then(response => response.json().then(data => {
     if (data.length > 0) {
-      let newNavBarText = `<a href="index.html" class="w3-button" style="flex:1; padding: 8px 0px ${window.location.pathname == "/Thief-Con/index.html" ? "text-decoration: underline;" : ""}">Home</a>`;
+      let newNavBarText = `<a href="index.html" class="w3-button" style="flex:1; padding: 8px 0px; ${((window.location.pathname == "/Thief-Con/index.html") || (window.location.pathname == "/Thief-Con/")) ? "text-decoration: underline;" : ""}">Home</a>`;
       if (data[0].hlp == null) {
         document.getElementById("nav-bar-bottom").innerHTML = `
           <a href="#" class="w3-button" style="flex:1; padding: 8px 0px">Home</a>
